@@ -1,0 +1,1 @@
+・GameOverした場合にpointを0にする。
