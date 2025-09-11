@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class [P]ShowTerminal
+public class ShowTerminal
 {
     
 }
