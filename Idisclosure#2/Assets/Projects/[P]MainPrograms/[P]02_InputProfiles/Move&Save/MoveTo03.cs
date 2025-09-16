@@ -86,7 +86,7 @@ public class MoveTo03 : MonoBehaviour
         // 変数に格納
         playerName = nameText;
         playerBirthYear = BirthDay.Year.ToString();
-        playerBirthday = BirthDay.ToString("MM/dd");
+        playerBirthday = BirthDay.ToString("MMdd");
         playerAge = age;
 
         // PlayerPrefs に保存
