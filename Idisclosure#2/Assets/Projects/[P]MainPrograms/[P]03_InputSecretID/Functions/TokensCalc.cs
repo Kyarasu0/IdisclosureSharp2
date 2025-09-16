@@ -31,7 +31,6 @@ public class TokensCalc : MonoBehaviour
     void CheckInput(string SecretID)
     {
         Costs = 0;
-        SecretID.Replace("\u200B", "");
         // 正規表現チェック
         if (SecretID.Length != 0)
         {
@@ -47,23 +46,26 @@ public class TokensCalc : MonoBehaviour
         string CheckID = SecretID;　//チェック用の変数
         // トークン計算
         //名前判定
-        if (SecretID.IndexOf(playerName) >= 0)
+        if(CheckID.IndexOf(playerName) >= 0)
         {
-            Costs += 10;
+            int nameCount = Regex.Matches(CheckID, playerName).Count;
+            Costs += 10*nameCount;
             CheckID = CheckID.Replace(playerName, "");
             Debug.Log(CheckID);
         }
         //誕生年判定
-        if (SecretID.IndexOf(playerBirthYear) >= 0)
+        if(CheckID.IndexOf(playerBirthYear) >= 0)
         {
-            Costs += 15;
+            int yearCount = Regex.Matches(CheckID, playerBirthYear).Count;
+            Costs += 15*yearCount;
             CheckID = CheckID.Replace(playerBirthYear, "");
             Debug.Log(CheckID);
         }
         //誕生日判定
-        if (SecretID.IndexOf(playerBirthday) >= 0)
+        if(CheckID.IndexOf(playerBirthday) >= 0)
         {
-            Costs += 15;
+            int birthdayCount = Regex.Matches(CheckID, playerBirthday).Count;
+            Costs += 15*birthdayCount;
             CheckID = CheckID.Replace(playerBirthday, "");
             Debug.Log(CheckID);
         }
@@ -77,7 +79,6 @@ public class TokensCalc : MonoBehaviour
         RawTokens = 100000 / Costs;
         //10の位以下を切り捨て
         Tokens = Mathf.FloorToInt(RawTokens / 100) * 100; 
-        TokensText.text = Tokens.ToString("F0")+" pt";
+        TokensText.text = Tokens.ToString()+" pt";
     }
-    
 }
