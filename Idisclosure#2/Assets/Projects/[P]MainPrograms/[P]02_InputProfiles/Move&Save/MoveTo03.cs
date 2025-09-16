@@ -11,6 +11,9 @@ public class MoveTo03 : MonoBehaviour
     [SerializeField] private Button submitButton;
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TMP_InputField birthdayInputField;
+    [SerializeField] private TextMeshProUGUI ErrorNameText;
+    [SerializeField] private TextMeshProUGUI ErrorBirthText;
+
 
     // 名前はアルファベット1〜8文字
     private Regex nameRegex = new Regex("^[A-Za-z]{1,8}$");
@@ -24,7 +27,11 @@ public class MoveTo03 : MonoBehaviour
 
     void Start()
     {
+        ErrorNameText.gameObject.SetActive(false);
+        ErrorBirthText.gameObject.SetActive(false);
         submitButton.onClick.AddListener(OnSubmit);
+
+
     }
 
     void OnSubmit()
@@ -32,17 +39,21 @@ public class MoveTo03 : MonoBehaviour
         string nameText = nameInputField.text;
         string birthdayText = birthdayInputField.text;
 
+        ErrorNameText.gameObject.SetActive(false);
+        ErrorBirthText.gameObject.SetActive(false);
         // 名前形式チェック
         if (!nameRegex.IsMatch(nameText))
         {
-            Debug.Log("入力エラー: 名前はアルファベット1〜8文字で入力してください");
+            ErrorNameText.text = "Please use 1–8 alphabet letters.";
+            ErrorNameText.gameObject.SetActive(true);
             return;
         }
 
         // 日付形式チェック
         if (!birthdayRegex.IsMatch(birthdayText))
         {
-            Debug.Log("入力エラー: 生年月日は yyyy/MM/dd の形式で入力してください");
+            ErrorBirthText.text = "Please enter birthday in yyyy/MM/dd format.";
+            ErrorBirthText.gameObject.SetActive(true);
             return;
         }
 
@@ -55,9 +66,10 @@ public class MoveTo03 : MonoBehaviour
         }
         else
         {
-            Debug.Log("存在しない日付です。");
+            ErrorBirthText.text = "Please enter a valid date.";
+            ErrorBirthText.gameObject.SetActive(true);
             return;
-            }
+        }
 
         // 年齢計算
         DateTime today = DateTime.Today;
@@ -66,7 +78,8 @@ public class MoveTo03 : MonoBehaviour
 
         if (age < 0 || age > 99)
         {
-            Debug.Log("年齢エラー: 0〜99歳の範囲で入力してください");
+            ErrorBirthText.text = "Please enter an age between 0 and 99.";
+            ErrorBirthText.gameObject.SetActive(true);
             return;
         }
 
@@ -89,3 +102,4 @@ public class MoveTo03 : MonoBehaviour
         SceneManager.LoadScene("03_InputSecretID");
     }
 }
+
