@@ -9,7 +9,9 @@ public class Register : MonoBehaviour
     public TMP_InputField SecretIDInputField;
     public TextMeshProUGUI TokensText;
     public Button submitButton;
-    private Regex secretIDRegex = new Regex(@"^[A-Za-z0-9!#$%&'-=^~|@`;+:*,<.>/?_]+$");
+    private Regex secretIDRegex = new Regex(
+    @"^[A-Za-z0-9!#$%&'\-=\^~|@`;+:*,<.>/?_\[\]{}""]+$"
+);
 
     void Start()
     {
