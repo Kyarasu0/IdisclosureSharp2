@@ -6,13 +6,16 @@ using System.Text.RegularExpressions;
 public class TokensCalc : MonoBehaviour
 {
     public TMP_InputField SecretIDInputField;
+    public TextMeshProUGUI InputText;
     public TextMeshProUGUI TokensText;
     public TextMeshProUGUI ErrorText;
     string playerName, playerBirthYear, playerBirthday;
     float Costs, RawTokens;
     int Tokens;
     // 英数字と一部記号のみ許可
-    private Regex secretIDRegex = new Regex(@"^[A-Za-z0-9!#$%&'-=^~|@`;+:*,<.>/?_]+$");
+    private Regex secretIDRegex = new Regex(
+    @"^[A-Za-z0-9!#$%&'-=^~|@`;+:*,<.>/?_\[\](){}""]+$"
+);
     void Start()
     {
         playerName = PlayerPrefs.GetString("PlayerName", "Unknown").Replace("\u200B", "");
