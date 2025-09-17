@@ -44,7 +44,6 @@ public class TokensCalc : MonoBehaviour
                 return;
             }
         }
-        InputText.text = InputText.text.Replace("\\", "\\\\");
 
         ErrorText.gameObject.SetActive(false);
         string CheckID = SecretID;　//チェック用の変数
