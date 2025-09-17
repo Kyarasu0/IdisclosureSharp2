@@ -10,8 +10,8 @@ public class Register : MonoBehaviour
     public TextMeshProUGUI TokensText;
     public Button submitButton;
     private Regex secretIDRegex = new Regex(
-    @"^[A-Za-z0-9!#$%&'\-=\^~|@`;+:*,<.>/?_\[\]{}""]+$"
-);
+        @"^[A-Za-z0-9!#$%&'-=^~|@`;+:*,<.>/?_\[\](){}""]+$"
+        );
 
     void Start()
     {
