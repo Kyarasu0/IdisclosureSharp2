@@ -11,6 +11,7 @@ public class WiFiActive1 : MonoBehaviour
     public Button WiFi_3_Button;
     void Start()
     {
+        WiFi_1_Shadow.SetActive(true);
         WiFi_2_Shadow.SetActive(false);
         WiFi_3_Shadow.SetActive(false);
         PlayerPrefs.SetString("WifiNumber", "1");
