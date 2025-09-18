@@ -19,7 +19,7 @@ public class CreateJoin : MonoBehaviourPunCallbacks
     {
         ErrorText.gameObject.SetActive(false);
         // プレイヤー名を設定（未設定ならランダム名）
-        string playerName = PlayerPrefs.GetString("Name", "Guest" + Random.Range(1000, 9999));
+        string playerName = PlayerPrefs.GetString("PlayerName", "Guest" + Random.Range(1000, 9999));
         PhotonNetwork.NickName = playerName;
 
         // Photonのリージョンを日本に設定
