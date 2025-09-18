@@ -3,11 +3,13 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using System.Collections;
+using System;
 
 public class ShowRoomMembers : MonoBehaviourPunCallbacks
 {
     public TMP_Text ShowText;
     public TMP_Text PlayerCountText;
+    public TMP_Text ClockText;
 
     int MaxPlayers = 6;
 
@@ -80,5 +82,12 @@ public class ShowRoomMembers : MonoBehaviourPunCallbacks
 
         ShowText.text = playerList;
         Debug.Log("プレイヤーリスト更新:\n" + playerList);
+    }
+    void Update()
+    {
+        DateTime now = DateTime.Now;
+
+        // 日付＋時刻を表示
+        ClockText.text = now.ToString("yyyy/MM/dd HH:mm:ss");
     }
 }
