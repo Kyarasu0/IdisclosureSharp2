@@ -70,7 +70,7 @@ public class BrowserSearch : MonoBehaviour
                             string PhishingWebIP = "";
                             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Phishing" + web + "IP"))
                             {
-                                FishingWebIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["Phishing" + web + "IP"];
+                                PhishingWebIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["Phishing" + web + "IP"];
                             }
 
                             // WiFiに保存
