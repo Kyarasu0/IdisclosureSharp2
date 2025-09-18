@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: ad5dc5bd50785e84d813521989cfff4e
+guid: b6dc2e61917aff344b476d4c4be0bd11
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3672199162005185278
-    second: wifi2_0
+      213: 6869230714176769984
+    second: DoSTool_0
+  - first:
+      213: 7828836695866939497
+    second: DoSTool_1
+  - first:
+      213: -3744558109800880139
+    second: DoSTool_2
+  - first:
+      213: -5378340790215224323
+    second: DoSTool_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,32 +106,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wifi2_0
+      name: DoSTool_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 7
-        width: 441
-        height: 197
+        x: 1278
+        y: 1489
+        width: 965
+        height: 275
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef26ec38ea546f230800000000000000
-      internalID: 3672199162005185278
+      spriteID: 0cf85b690f8645f50800000000000000
+      internalID: 6869230714176769984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoSTool_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 334
+        width: 1833
+        height: 1054
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96811b5fe7d95ac60800000000000000
+      internalID: 7828836695866939497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoSTool_2
+      rect:
+        serializedVersion: 2
+        x: 1938
+        y: 332
+        width: 1568
+        height: 1055
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f7a2881d38a80cc0800000000000000
+      internalID: -3744558109800880139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoSTool_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 689
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df35a360c8b4c55b0800000000000000
+      internalID: -5378340790215224323
       vertices: []
       indices: 
       edges: []
@@ -164,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wifi2_0: 3672199162005185278
+      DoSTool_0: 6869230714176769984
+      DoSTool_1: 7828836695866939497
+      DoSTool_2: -3744558109800880139
+      DoSTool_3: -5378340790215224323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
