@@ -47,7 +47,6 @@ public class RealTimeTimer : MonoBehaviour
     {
         // 経過時間
         float elapsedSeconds = (float)(((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds() - startTime);
-        Debug.Log("ElapsedSeconds: " + elapsedSeconds);
 
         // 残り時間
         float remaining = (totalSeconds - elapsedSeconds);
