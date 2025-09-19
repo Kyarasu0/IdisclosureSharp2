@@ -2,27 +2,42 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text.RegularExpressions;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Execute : MonoBehaviour
 {
     private string[] Webs;
     public TMP_Text Command;
     public TMP_Text Terminal;
+    public string PC_Or_Server = "";
+    string WitchBattery = "";
     void Start()
     {
         LoadWebs();
     }
 
-    void Update()
+    void RunTools()
     {
         // オブジェクトを文字に変換
+        // ここではCrackToolのため小文字に強制しないのでUsageのUIで指示する必要がある
         string command = Command.text;
+
+        // PCかServerどちらのBatteryを使うのかを定義
+        if (PC_Or_Server == "PC")
+        {
+            WitchBattery = "Battery";
+        }
+        else if (PC_Or_Server == "Server")
+        {
+            WitchBattery = "BatteryMyServer";
+        }
         
         // Terminal実行(検索)を検知する
         foreach (string web in Webs)
         {
-            // Patternが一致したらスクリプトファイルを実行
-            if (Regex.IsMatch(command, $@"{web.ToLower()}.*"))
+            // Patternが一致し、Downloadされていればスクリプトファイルを実行
+            if (Regex.IsMatch(command, $@"{web.ToLower()}.*") && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey($"Download{web}") && (bool)PhotonNetwork.LocalPlayer.CustomProperties[$"Download{web}"])
             {
                 // CommandHeader部分を削除(例:dostool <ip> → <ip>)
                 command = command.Replace(web.ToLower(), "");
@@ -40,7 +55,7 @@ public class Execute : MonoBehaviour
                     var instance = Activator.CreateInstance(type);
 
                     // Scriptを実行
-                    type.GetMethod("Execute")?.Invoke(instance, new object[] { command });
+                    type.GetMethod("Execute")?.Invoke(instance, new object[] { command, WitchBattery });
                 }
 
             }
