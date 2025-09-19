@@ -17,6 +17,11 @@ public class BrowserSearch : MonoBehaviour
     [Header("検索に使用するBattery")]
     public int Drain;
 
+    void Start()
+    {
+        LoadWebs();
+    }
+
     public void SearchAndMove()
     {
         // 検索ワードの圧縮化
@@ -115,7 +120,7 @@ public class BrowserSearch : MonoBehaviour
 
                 }
             }
-                    
+
         }
     }
 

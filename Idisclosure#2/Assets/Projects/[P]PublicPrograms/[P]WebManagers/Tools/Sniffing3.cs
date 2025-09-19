@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShowTerminal
+public class Sniffing3
 {
     
 }

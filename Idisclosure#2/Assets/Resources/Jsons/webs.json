@@ -1,14 +1,15 @@
 {
   "webs": [
-    "VirusOO",
-    "SpareBatteryPC",
-    "SpareBatteryMyServer",
-    "SmallBatteryPC",
-    "SmallBatteryMyServer",
-    "IPBST1",
-    "IPBST2",
-    "IPBST3",
+    "Sniffing1",
+    "Sniffing2",
+    "Sniffing3",
+    "Battery25%",
+    "Battery100%",
     "DoSTool",
-    "CrackTool"
+    "CrackTool",
+    "Worm",
+    "Spyware",
+    "PortScanner",
+    "AntiVirus"
   ]
 }

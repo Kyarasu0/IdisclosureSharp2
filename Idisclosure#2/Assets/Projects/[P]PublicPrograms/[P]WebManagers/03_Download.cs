@@ -55,7 +55,7 @@ public class Download : MonoBehaviour
         Debug.Log("WebのIPを取得");
 
         // Tokensの支払い処理
-        if ((tokens - drain) >= 0 && !PlayerPrefs.GetString("TerminalDisplay", "").Contains(webName + "\n"))
+        if ((tokens - drain) >= 0 && !PlayerPrefs.GetString("TerminalMenu", "").Contains(webName + "\n"))
         {
             // 購入可能 かつ 未所持だった場合
 
@@ -74,12 +74,12 @@ public class Download : MonoBehaviour
                 PlayerPrefs.Save();
                 Debug.Log("購入後に登録");
 
-                // TerminalDisplayの取得、追加、保存
-                showTerminal = PlayerPrefs.GetString("TerminalDisplay", "");
+                // TerminalMenuの取得、追加、保存
+                showTerminal = PlayerPrefs.GetString("TerminalMenu", "");
                 showTerminal += webName + "\n";
-                PlayerPrefs.SetString("TerminalDisplay", showTerminal);
+                PlayerPrefs.SetString("TerminalMenu", showTerminal);
                 PlayerPrefs.Save();
-                Debug.Log("TerminalDisplayの取得、追加、保存");
+                Debug.Log("TerminalMenuの取得、追加、保存");
 
                 // webの存在Logを消去
                 Hashtable RemoveStoreWeb = new Hashtable { { webName, false } };
@@ -162,7 +162,7 @@ public class Download : MonoBehaviour
         {
             Debug.Log("所持金が足りていないようです...");
         }
-        else if (PlayerPrefs.GetString("TerminalDisplay", "").Contains(webName + "\n"))
+        else if (PlayerPrefs.GetString("TerminalMenu", "").Contains(webName + "\n"))
         {
             Debug.Log("すでに所持しているようです");
         }
