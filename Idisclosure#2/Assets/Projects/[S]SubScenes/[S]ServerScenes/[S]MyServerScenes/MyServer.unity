@@ -1857,7 +1857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageSize: 0
   leftDirection: 0
   Display: {fileID: 989000400}
   PageDisplay: {fileID: 761393232}
@@ -2143,7 +2142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageSize: 0
   leftDirection: 1
   Display: {fileID: 989000400}
   PageDisplay: {fileID: 761393232}

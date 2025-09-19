@@ -41,8 +41,8 @@ public class PhishingManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void StopPhishingApplication()
     {
-        //FishingAppの取得と無効化
-        string PhishingAppName = "";
+        //PhishingAppの取得と無効化
+        string phishingAppName = "";
         string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PhishingAppName"))
         {
