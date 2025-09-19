@@ -3,11 +3,11 @@ using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
 
-public class DisplayManager: MonoBehaviour
+public class TerminalDisplayManager: MonoBehaviour
 {
     string[] browserParts;
     string onePageElement = "";
-    public int pageSize;
+    int pageSize = 4;
     int i = 0;
     string showBrowser = "";
     int currentPage = 1;
@@ -78,7 +78,6 @@ public class DisplayManager: MonoBehaviour
             pageMaxDisplay = (int)PhotonNetwork.CurrentRoom.CustomProperties[$"PageMax{Identifier}"];
         }
         PageDisplay.text = currentPage + "/" + pageMaxDisplay;
-
     }
 
     public void MovePage()
@@ -118,5 +117,21 @@ public class DisplayManager: MonoBehaviour
         // Pageの保存
         PlayerPrefs.SetInt($"CurrentPage{Identifier}", currentPage);
         PlayerPrefs.Save();
+    }
+
+    // ★追加機能★
+    // ボタンから呼んで TerminalMenu を全部表示する
+    public void ShowAllTerminalMenu()
+    {
+        string rawText = PlayerPrefs.GetString("TerminalMenu", "");
+        if (string.IsNullOrEmpty(rawText))
+        {
+            Display.text = "TerminalMenu にデータがありません。";
+        }
+        else
+        {
+            Display.text = rawText;
+        }
+        PageDisplay.text = "ALL";
     }
 }

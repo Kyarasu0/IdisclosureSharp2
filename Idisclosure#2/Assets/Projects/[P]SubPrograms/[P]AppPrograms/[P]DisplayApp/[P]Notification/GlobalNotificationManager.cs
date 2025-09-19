@@ -22,9 +22,9 @@ public class GlobalNotificationManager : MonoBehaviour
     void Update()
     {
         // BrowserDisplayを取得
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Global_Notification_BrowserDisplay"))
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("NotificationDisplayGlobal"))
         {
-            showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["Global_Notification_BrowserDisplay"];
+            showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["NotificationDisplayGlobal"];
         }
 
         // \n\nで分割
