@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 063cc188a26ef214285bded2d2da26fe
+guid: 589b8c0045339e540ac25e99123a15c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5325650105722581375
-    second: Rectangle 7 (1)_0
+      213: -3092956421908063085
+    second: Return_0
+  - first:
+      213: 1850832730187021959
+    second: Return_1
+  - first:
+      213: -4521355783803873541
+    second: Return_2
+  - first:
+      213: 2100415886891379821
+    second: Return_3
+  - first:
+      213: -689305739145711562
+    second: Return_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,32 +109,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rectangle 7 (1)_0
+      name: Return_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 891
-        height: 182
+        x: 65
+        y: 237
+        width: 151
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 18e4262027d7716b0800000000000000
-      internalID: -5325650105722581375
+      spriteID: 39c186e758c9315d0800000000000000
+      internalID: -3092956421908063085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 50
+        width: 86
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78eb67ddf8a7fa910800000000000000
+      internalID: 1850832730187021959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 38
+        width: 35
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6563baedae041c0800000000000000
+      internalID: -4521355783803873541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 87
+        width: 152
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c6fb2ee1d262d10800000000000000
+      internalID: 2100415886891379821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 12
+        width: 154
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630f49415181f66f0800000000000000
+      internalID: -689305739145711562
       vertices: []
       indices: 
       edges: []
@@ -164,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rectangle 7 (1)_0: -5325650105722581375
+      Return_0: -3092956421908063085
+      Return_1: 1850832730187021959
+      Return_2: -4521355783803873541
+      Return_3: 2100415886891379821
+      Return_4: -689305739145711562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

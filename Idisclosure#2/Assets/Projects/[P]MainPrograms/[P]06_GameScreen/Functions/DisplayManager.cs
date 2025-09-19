@@ -7,7 +7,7 @@ public class DisplayManager: MonoBehaviour
 {
     string[] browserParts;
     string onePageElement = "";
-    int pageSize = 4;
+    public int pageSize;
     int i = 0;
     string showBrowser = "";
     int currentPage = 1;

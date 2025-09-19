@@ -13,9 +13,6 @@ public class CrackReceiver : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             string message = (string)photonEvent.CustomData;
             Debug.Log("[CrackReceiver] Message received: " + message);
-
-            // ここに「クラックされたときの処理」を追加
-            // 例：UI表示や強制シーン遷移など
         }
     }
 }
