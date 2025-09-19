@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 588012330}
   - component: {fileID: 588012329}
   m_Layer: 5
-  m_Name: SmallBattery
+  m_Name: Sniffing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SmallBattery
+  m_text: Sniffing 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
   m_sharedMaterial: {fileID: -3739302519245843993, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Recovers 25% of your PC
+  m_text: 'Steal the IP address
 
-    or server''s battery.'
+    connected to Wi-Fi 1.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
   m_sharedMaterial: {fileID: -3739302519245843993, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
