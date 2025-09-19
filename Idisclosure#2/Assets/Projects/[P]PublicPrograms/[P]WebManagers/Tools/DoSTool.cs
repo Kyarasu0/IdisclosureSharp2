@@ -56,18 +56,16 @@ public class DoSTool : MonoBehaviour
             }
 
             // 使い終わったら削除
-            string showTerminalDisplay = "";
-            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalMenu"))
-            {
-                showTerminalDisplay = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalMenu"];
-            }
-            showTerminalDisplay = showTerminalDisplay.Replace("DoSTool\n\n", "");
-            Hashtable RemoveDoSTool = new Hashtable
-            {
-                {"TerminalMenu", showTerminalDisplay},
-                {"DownloadDoSTool", false},
-            };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(RemoveDoSTool);
+
+            // 削除(TerminalDisplay)
+            string terminalMenu = PlayerPrefs.GetString("TerminalMenu", "").Replace("\u200B", "");
+            terminalMenu = terminalMenu.Replace("DoSTool\n\n", "");
+            PlayerPrefs.SetString("TerminalMenu", terminalMenu);
+            PlayerPrefs.Save();
+
+            // 削除(DownloadWeb)
+            PlayerPrefs.SetInt("DownloadDoSTool", 0);
+            PlayerPrefs.Save();
         }
     }
 }

@@ -18,7 +18,17 @@ public class Battery25 : MonoBehaviour
             PlayerPrefs.Save();
 
             // 表示
-            PlayerPrefs.SetString("TerminalDisplay", "Battery increased by 25%!");
+            PlayerPrefs.SetString("TerminalDisplay", "Battery increased by 25%!\n\n");
+            PlayerPrefs.Save();
+
+            // 削除(TerminalDisplay)
+            string terminalMenu = PlayerPrefs.GetString("TerminalMenu", "").Replace("\u200B", "");
+            terminalMenu = terminalMenu.Replace("Battery25\n\n", "");
+            PlayerPrefs.SetString("TerminalMenu", terminalMenu);
+            PlayerPrefs.Save();
+
+            // 削除(DownloadWeb)
+            PlayerPrefs.SetInt("DownloadBattery25", 0);
             PlayerPrefs.Save();
         }
     }

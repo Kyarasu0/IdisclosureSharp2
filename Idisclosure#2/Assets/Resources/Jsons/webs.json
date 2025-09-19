@@ -3,13 +3,13 @@
     "Sniffing1",
     "Sniffing2",
     "Sniffing3",
-    "Battery25%",
-    "Battery100%",
+    "Battery25",
+    "Battery100",
     "DoSTool",
     "CrackTool",
     "Worm",
     "Spyware",
     "PortScanner",
-    "AntiVirus"
+    "AntiVirusSoftware"
   ]
 }

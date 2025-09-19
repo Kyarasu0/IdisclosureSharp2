@@ -14,7 +14,7 @@ using System;
 public class Download : MonoBehaviour
 {
     [Header("値段を設定")]
-    public string Drain;
+    public int Drain;
     [Header("DownloadするToolの名前を入力")]
     public string webName;
     [Header("素材")]
@@ -37,13 +37,12 @@ public class Download : MonoBehaviour
 
     public void DownloadTool()
     {
-        int drain = int.Parse(Drain);
         string Name = PlayerPrefs.GetString("Name", "").Replace("\u200B", "");
         int tokens = int.Parse(PlayerPrefs.GetString("Tokens", "100").Replace("\u200B", ""));
 
         if (testMode)
         {
-            StartCoroutine(ShowProgressBar());
+            StartCoroutine(ShowProgressBar("Success"));
             return;
         }
 
@@ -55,12 +54,12 @@ public class Download : MonoBehaviour
         Debug.Log("WebのIPを取得");
 
         // Tokensの支払い処理
-        if ((tokens - drain) >= 0 && !PlayerPrefs.GetString("TerminalMenu", "").Contains(webName + "\n"))
+        if ((tokens - Drain) >= 0 && PlayerPrefs.GetInt("Download" + webName) == 0)
         {
             // 購入可能 かつ 未所持だった場合
 
             // 購入手続き
-            tokens -= drain;
+            tokens -= Drain;
             PlayerPrefs.SetString("Tokens", tokens.ToString());
             PlayerPrefs.Save();
             Debug.Log("購入手続き");
@@ -76,7 +75,7 @@ public class Download : MonoBehaviour
 
                 // TerminalMenuの取得、追加、保存
                 showTerminal = PlayerPrefs.GetString("TerminalMenu", "");
-                showTerminal += webName + "\n";
+                showTerminal += webName + "\n\n";
                 PlayerPrefs.SetString("TerminalMenu", showTerminal);
                 PlayerPrefs.Save();
                 Debug.Log("TerminalMenuの取得、追加、保存");
@@ -90,14 +89,16 @@ public class Download : MonoBehaviour
                 if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
                 {
                     showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
-                    if (showBrowser.Contains(webName + "\n→ " + webIP + "\n"))
+                    if (showBrowser.Contains(webName + "\n→ " + webIP + "\n\n"))
                     {
-                        showBrowser = showBrowser.Replace(webName + "\n→ " + webIP + "\n", "");
+                        showBrowser = showBrowser.Replace(webName + "\n→ " + webIP + "\n\n", "");
                     }
                 }
                 Hashtable ShowBrowser = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowBrowser);
                 Debug.Log("webをBrowserから削除");
+
+                StartCoroutine(ShowProgressBar("Success"));
             }
             else
             {
@@ -134,41 +135,39 @@ public class Download : MonoBehaviour
                 // 支払われたらServerの主に送金
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { targetPlayer.ActorNumber } };
                 SendOptions sendOptions = new SendOptions { Reliability = true };
-                PhotonNetwork.RaiseEvent(SuccessPhishing, drain, raiseEventOptions, sendOptions);
-                SceneManager.LoadScene("Failed");
+                PhotonNetwork.RaiseEvent(SuccessPhishing, Drain, raiseEventOptions, sendOptions);
 
                 // Phishingの被害を全員に通知
                 string notificationDisplayGlobal = "";
                 if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("NotificationDisplayGlobal"))
                 {
                     notificationDisplayGlobal = (string)PhotonNetwork.CurrentRoom.CustomProperties["NotificationDisplayGlobal"];
-                    notificationDisplayGlobal += "[" + phisherName + "]" + Name + " is hooked!!\n";
+                    notificationDisplayGlobal += "[" + phisherName + "]" + Name + " is hooked!!\n\n";
                 }
                 else
                 {
-                    notificationDisplayGlobal = "[" + phisherName + "]" + Name + " is hooked!!\n";
+                    notificationDisplayGlobal = "[" + phisherName + "]" + Name + " is hooked!!\n\n";
                 }
                 Hashtable PhishingNotification = new Hashtable
                 {
                     {"NotificationDisplayGlobal", notificationDisplayGlobal},
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(PhishingNotification);
+
+                StartCoroutine(ShowProgressBar("Failed"));
             }
-
-
-            StartCoroutine(ShowProgressBar());
         }
-        else if ((tokens - drain) < 0)
+        else if ((tokens - Drain) < 0)
         {
             Debug.Log("所持金が足りていないようです...");
         }
-        else if (PlayerPrefs.GetString("TerminalMenu", "").Contains(webName + "\n"))
+        else if (PlayerPrefs.GetInt("Download" + webName) == 1)
         {
             Debug.Log("すでに所持しているようです");
         }
     }
 
-    private IEnumerator ShowProgressBar()
+    private IEnumerator ShowProgressBar(string scene)
     {
         // ProgressBarを描画
         progress = 0f;
@@ -180,8 +179,7 @@ public class Download : MonoBehaviour
             Debug.Log("progressbarを描画中");
             yield return new WaitForSeconds(0.05f);
         }
-
-        SceneManager.LoadScene("Success");
+        SceneManager.LoadScene(scene);
     }
 
     private void LoadMalwares()

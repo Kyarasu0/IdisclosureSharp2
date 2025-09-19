@@ -19,11 +19,22 @@ public class Spyware : MonoBehaviour
             // 実行
             PlayerPrefs.SetInt("HaveSpyware", 1);
             PlayerPrefs.Save();
-            Debug.Log("Spywareをゲットした!");
+            Debug.Log("SpywareをPhishingServerに仕掛けた!");
 
             // 表示
             PlayerPrefs.SetString("TerminalDisplay", "The spyware is ready on the phishing server!\n\n");
             PlayerPrefs.Save();
+
+            // 削除(TerminalDisplay)
+            string terminalMenu = PlayerPrefs.GetString("TerminalMenu", "").Replace("\u200B", "");
+            terminalMenu = terminalMenu.Replace("Spyware\n\n", "");
+            PlayerPrefs.SetString("TerminalMenu", terminalMenu);
+            PlayerPrefs.Save();
+
+            // 削除(DownloadWeb)
+            PlayerPrefs.SetInt("DownloadSpyware", 0);
+            PlayerPrefs.Save();
+            
         }
     }
 }

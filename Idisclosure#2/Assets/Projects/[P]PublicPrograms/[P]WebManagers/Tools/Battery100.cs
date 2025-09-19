@@ -18,7 +18,17 @@ public class Battery100 : MonoBehaviour
             PlayerPrefs.Save();
 
             // 表示
-            PlayerPrefs.SetString("TerminalDisplay", "Battery increased by 100%!");
+            PlayerPrefs.SetString("TerminalDisplay", "Battery increased by 100%!\n\n");
+            PlayerPrefs.Save();
+
+            // 削除(TerminalDisplay)
+            string terminalMenu = PlayerPrefs.GetString("TerminalMenu", "").Replace("\u200B", "");
+            terminalMenu = terminalMenu.Replace("Battery100\n\n", "");
+            PlayerPrefs.SetString("TerminalMenu", terminalMenu);
+            PlayerPrefs.Save();
+
+            // 削除(DownloadWeb)
+            PlayerPrefs.SetInt("DownloadBattery100", 0);
             PlayerPrefs.Save();
         }
     }
