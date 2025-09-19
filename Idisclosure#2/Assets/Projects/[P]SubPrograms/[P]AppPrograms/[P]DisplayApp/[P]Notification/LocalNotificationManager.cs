@@ -4,6 +4,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
 public class LocalNotificationManager : MonoBehaviour
 {
+    //aaaa
     string[] browserParts;
     string onePageElement = "";
     int pageSize = 4;
