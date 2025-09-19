@@ -1623,12 +1623,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482228564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1099608638}
+  m_Father: {fileID: 1500638076}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2617,7 +2617,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1500638076}
+  m_Father: {fileID: 1099608638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3119,6 +3119,7 @@ GameObject:
   - component: {fileID: 799976282}
   - component: {fileID: 799976281}
   - component: {fileID: 799976280}
+  - component: {fileID: 799976283}
   m_Layer: 5
   m_Name: Global_RightArrowButton
   m_TagString: Untagged
@@ -3228,6 +3229,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799976278}
   m_CullTransparentMesh: 1
+--- !u!114 &799976283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799976278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6f6c29c0e7cd44baa3bd1f19ee9ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  browserParts: []
+  onePageElement: 
+  pageSize: 4
+  i: 0
+  showBrowser: 
+  currentPage: 1
+  direction: 0
+  pageMax: 0
+  pageMaxDisplay: 0
+  leftDirection: 0
+  Display: {fileID: 482228566}
+  PageDisplay: {fileID: 1249806003}
 --- !u!1 &871989296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4030,9 +4055,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 393652636}
+  - {fileID: 689271982}
   - {fileID: 176112221}
   - {fileID: 23174466}
-  - {fileID: 482228565}
   - {fileID: 1579640379}
   - {fileID: 1939085585}
   - {fileID: 282091700}
@@ -4343,7 +4368,6 @@ GameObject:
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
   - component: {fileID: 1242558771}
-  - component: {fileID: 1242558772}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4469,21 +4493,6 @@ MonoBehaviour:
   WiFi_1_Button: {fileID: 595596831}
   WiFi_2_Button: {fileID: 1868586824}
   WiFi_3_Button: {fileID: 1045825367}
---- !u!114 &1242558772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242558765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d6f6c29c0e7cd44baa3bd1f19ee9ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftDirection: 0
-  Display: {fileID: 0}
-  PageDisplay: {fileID: 0}
 --- !u!1 &1249806001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,6 +6017,7 @@ GameObject:
   - component: {fileID: 1444761500}
   - component: {fileID: 1444761499}
   - component: {fileID: 1444761498}
+  - component: {fileID: 1444761501}
   m_Layer: 5
   m_Name: Global_LeftArrowButton
   m_TagString: Untagged
@@ -6117,6 +6127,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444761496}
   m_CullTransparentMesh: 1
+--- !u!114 &1444761501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444761496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6f6c29c0e7cd44baa3bd1f19ee9ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  browserParts: []
+  onePageElement: 
+  pageSize: 4
+  i: 0
+  showBrowser: 
+  currentPage: 1
+  direction: 0
+  pageMax: 0
+  pageMaxDisplay: 0
+  leftDirection: 1
+  Display: {fileID: 482228566}
+  PageDisplay: {fileID: 1249806003}
 --- !u!1 &1500638075
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,8 +6179,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 689271982}
   - {fileID: 123952871}
+  - {fileID: 482228565}
   - {fileID: 520258284}
   - {fileID: 1965407650}
   - {fileID: 1249806002}
@@ -6583,6 +6617,7 @@ GameObject:
   - component: {fileID: 1579640382}
   - component: {fileID: 1579640381}
   - component: {fileID: 1579640380}
+  - component: {fileID: 1579640383}
   m_Layer: 5
   m_Name: Local_LeftArrowButton
   m_TagString: Untagged
@@ -6692,6 +6727,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579640378}
   m_CullTransparentMesh: 1
+--- !u!114 &1579640383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579640378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee674d1e12a67c14a9ab564294897885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftDirection: 1
+  Display: {fileID: 689271983}
+  PageDisplay: {fileID: 282091701}
 --- !u!1 &1678674476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,6 +7249,7 @@ GameObject:
   - component: {fileID: 1939085588}
   - component: {fileID: 1939085587}
   - component: {fileID: 1939085586}
+  - component: {fileID: 1939085589}
   m_Layer: 5
   m_Name: Local_RightArrowButton
   m_TagString: Untagged
@@ -7308,6 +7359,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939085584}
   m_CullTransparentMesh: 1
+--- !u!114 &1939085589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939085584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee674d1e12a67c14a9ab564294897885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftDirection: 0
+  Display: {fileID: 689271983}
+  PageDisplay: {fileID: 282091701}
 --- !u!1 &1939109094
 GameObject:
   m_ObjectHideFlags: 0
