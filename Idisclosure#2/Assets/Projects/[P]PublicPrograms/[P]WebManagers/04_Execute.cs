@@ -73,7 +73,7 @@ public class Execute : MonoBehaviour
     private void LoadWebs()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("webs");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsonwebs");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し

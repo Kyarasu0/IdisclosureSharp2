@@ -8,11 +8,10 @@ using System.Collections.Generic;
 
 public class CreateStoreWeb : MonoBehaviour
 {
-    public TMP_Text ShowBrowser;
     int randomValue = 0;
     string[] Webs;
     string showBrowser = "";
-    string ip = "";
+
     string snsServerIP = "";
 
     void Start()
@@ -20,6 +19,7 @@ public class CreateStoreWeb : MonoBehaviour
         LoadWebs();
         // 起動してから1秒間隔でランダムを回す
         InvokeRepeating(nameof(RandomCreator), 0f, 1f);
+        Debug.Log("CreateStoreWeb始動!");
     }
 
     void RandomCreator()
@@ -37,12 +37,11 @@ public class CreateStoreWeb : MonoBehaviour
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SNSServerIP"))
             {
                 snsServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SNSServerIP"];
+                // Browserに追加
+                showBrowser += "SNS Server\n→ " + snsServerIP + ": 80\n\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
-
-            // Browserに追加
-            showBrowser += "SNS Server\n→ " + snsServerIP + ": 80\n\n";
-            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
         }
 
         // 特定のIDが当たればWebが建ち上がる
@@ -54,33 +53,25 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 if (randomValue == i)
                 {
+                    Debug.Log("何かが当たった！");
                     // 判別しているプロパティをtrueにする
                     Hashtable props = new Hashtable { { Webs[i], true } };
                     PhotonNetwork.CurrentRoom.SetCustomProperties(props);
-                    MakeIP(Webs[i]);
                     Debug.Log("Create" + Webs[i]);
-                    // Browserのデータを取得
-                    if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
-                    {
-                        showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
-                    }
-                    if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey($"{Webs[i]}IP"))
-                    {
-                        ip = (string)PhotonNetwork.CurrentRoom.CustomProperties[$"{Webs[i]}IP"];
-                    }
                     if (!(showBrowser.Contains(Webs[i] + "\n")))
                     {
                         // Browserに追加
-                        showBrowser += Webs[i] + "\n→ " + ip + ": 80\n\n";
+                        showBrowser += Webs[i] + "\n→ " + MakeIP(Webs[i]) + ": 80\n\n";
                         Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                         PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                        Debug.Log(Webs[i] + "が描画された！");
                     }
                 }
             }
         }
     }
 
-    public void MakeIP(string webName)
+    public string MakeIP(string webName)
     {
         // IPアドレスのリストを取得する
         List<string> IPList = new List<string>();
@@ -117,12 +108,13 @@ public class CreateStoreWeb : MonoBehaviour
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
         Debug.Log("IPList is saved! : " + string.Join(",", IPList));
+        return NewIP;
     }
     
     private void LoadWebs()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("webs");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/webs");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し

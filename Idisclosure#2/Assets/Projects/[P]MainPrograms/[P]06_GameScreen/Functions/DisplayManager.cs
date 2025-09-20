@@ -22,7 +22,12 @@ public class DisplayManager: MonoBehaviour
     [Header("識別子")]
     public string Identifier;
 
-    void Update()
+    void Start()
+    {
+        InvokeRepeating(nameof(DisplayPerSecond), 0f, 0.3f);
+    }
+
+    void DisplayPerSecond()
     {
         // \n\nを4つごとに区切って各Pageに常に分ける
 
