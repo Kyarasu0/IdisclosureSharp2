@@ -53,7 +53,6 @@ public class RealTimeTimer : MonoBehaviour
             totalSeconds = (float)PhotonNetwork.CurrentRoom.CustomProperties["RemainingTime"];
         }
         // totalSeconds = (float)totalMinutes * 60f;
-        Debug.Log("RemainingTime: " + totalSeconds);
 
         // 経過時間
         float elapsedSeconds = (float)(((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds() - startTime);

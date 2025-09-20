@@ -31,7 +31,6 @@ public class Register : MonoBehaviour
         }
         Debug.Log("Secret ID and Tokens saved.");
         PlayerPrefs.SetString("SecretID", SecretID);
-        PlayerPrefs.SetString("Tokens", Tokens);
         PlayerPrefs.Save();
         SceneManager.LoadScene("04_CreateJoin");
     }
