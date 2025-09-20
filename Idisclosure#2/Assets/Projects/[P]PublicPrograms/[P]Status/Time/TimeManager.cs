@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 public class RealTimeTimer : MonoBehaviour
 {
@@ -15,7 +19,7 @@ public class RealTimeTimer : MonoBehaviour
     public bool testMode;
 
     private long startTime;
-    private float totalSeconds;
+    private float totalSeconds = 300;
 
     // // 2025/09/16 12:34:56 UTC(DateTime型)
     // // ↑DateTime.UtcNowでこんな感じの結果がstartTimeに入る
@@ -39,15 +43,17 @@ public class RealTimeTimer : MonoBehaviour
             startTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
             Debug.Log("StartTime: " + startTime);
         }
-
-        // 制限時間の取得と秒数化
-        int totalMinutes = PlayerPrefs.GetInt("RemainingTime", timerMinutes);
-        totalSeconds = (float)totalMinutes * 60f;
-        Debug.Log("RemainingTime: " + totalMinutes);
     }
 
     void Update()
     {
+        // 制限時間の取得と秒数化
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("RemainingTime"))
+        {
+            totalSeconds = (float)PhotonNetwork.CurrentRoom.CustomProperties["RemainingTime"];
+        }
+        // totalSeconds = (float)totalMinutes * 60f;
+
         // 経過時間
         float elapsedSeconds = (float)(((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds() - startTime);
 
@@ -104,11 +110,11 @@ public class RealTimeTimer : MonoBehaviour
 
         // イベント発火時間か確認、イベント発火時間なら起動する
         string profiles = "";
-        if (player.CustomProperties.ContainsKey("Profiles"))
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Profiles"))
         {
-            string profiles = player.CustomProperties["Profiles"];
+            profiles = (string)PhotonNetwork.CurrentRoom.CustomProperties["Profiles"];
         }
-        while (eventDone < maxEvent)
+        if (eventDone < maxEvent)
         {
             if (timeRemaining < timeRemaining * (float)(maxEvent - eventDone) / maxEvent)
             {
@@ -118,7 +124,7 @@ public class RealTimeTimer : MonoBehaviour
                 {
                     {"EventDone", eventDone},
                 };
-                PhotonNetwork.CustomProperties.SetCustomProperties(done);
+                PhotonNetwork.CurrentRoom.SetCustomProperties(done);
 
                 // eventDoneの数字によって挙動を変える
                 switch (eventDone)
@@ -128,7 +134,7 @@ public class RealTimeTimer : MonoBehaviour
                         {
                             if (player.CustomProperties.ContainsKey("Name"))
                             {
-                                string playerName = player.CustomProperties["Name"];
+                                string playerName = (string)player.CustomProperties["Name"];
                                 profiles += "["+ playerName + "]Hi, I'm" + playerName + "!\n\n";
                             }
                         }
@@ -136,71 +142,91 @@ public class RealTimeTimer : MonoBehaviour
                         {
                             {"Profiles", profiles},
                         };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(prof);
                         break;
 
                     case 2:// 誕生日
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
+                            string playerName = "";
+                            if (player.CustomProperties.ContainsKey("Name"))
+                            {
+                                playerName = (string)player.CustomProperties["Name"];
+                            }
                             if (player.CustomProperties.ContainsKey("Birthday"))
                             {
-                                string playerBirthday = player.CustomProperties["Birthday"];
-                                profiles += "["+ playerName + "]My birthday is " + playerBirthday + "!\n\n";
+                                string playerBirthday = (string)player.CustomProperties["Birthday"];
+                                profiles += "[" + playerName + "]My birthday is " + playerBirthday + "!\n\n";
                             }
                         }
-                        Hashtable prof = new Hashtable
+                        Hashtable prof2 = new Hashtable
                         {
                             {"Profiles", profiles},
                         };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(prof2);
                         break;
 
                     case 3:// 年齢
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
+                            string playerName = "";
+                            if (player.CustomProperties.ContainsKey("Name"))
+                            {
+                                playerName = (string)player.CustomProperties["Name"];
+                            }
                             if (player.CustomProperties.ContainsKey("Age"))
                             {
-                                string playerAge = player.CustomProperties["Age"];
-                                profiles += "["+ playerName + "]I'm " + playerAge + " year(s) old!\n\n";
+                                string playerAge = (string)player.CustomProperties["Age"];
+                                profiles += "[" + playerName + "]I'm " + playerAge + " year(s) old!\n\n";
                             }
                         }
-                        Hashtable prof = new Hashtable
+                        Hashtable prof3 = new Hashtable
                         {
                             {"Profiles", profiles},
                         };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(prof3);
                         break;
 
                     case 4:// 生年
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
+                            string playerName = "";
+                            if (player.CustomProperties.ContainsKey("Name"))
+                            {
+                                playerName = (string)player.CustomProperties["Name"];
+                            }
                             if (player.CustomProperties.ContainsKey("Birthyear"))
                             {
-                                string playerBirthyear = player.CustomProperties["Birthyear"];
-                                profiles += "["+ playerName + "]My birthyear is " + playerBirthyear + "!\n\n";
+                                string playerBirthyear = (string)player.CustomProperties["Birthyear"];
+                                profiles += "[" + playerName + "]My birthyear is " + playerBirthyear + "!\n\n";
                             }
                         }
-                        Hashtable prof = new Hashtable
+                        Hashtable prof4 = new Hashtable
                         {
                             {"Profiles", profiles},
                         };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(prof4);
                         break;
                         
                     case 5:// Tokens
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
+                            string playerName = "";
+                            if (player.CustomProperties.ContainsKey("Name"))
+                            {
+                                playerName = (string)player.CustomProperties["Name"];
+                            }
                             if (player.CustomProperties.ContainsKey("Tokens"))
                             {
-                                string playerTokens = player.CustomProperties["Tokens"];
-                                profiles += "["+ playerName + "]I have " + playerTokens + " tokens!\n\n";
+                                string playerTokens = (string)player.CustomProperties["Tokens"];
+                                profiles += "[" + playerName + "]I have " + playerTokens + " tokens!\n\n";
                             }
                         }
-                        Hashtable prof = new Hashtable
+                        Hashtable prof5 = new Hashtable
                         {
                             {"Profiles", profiles},
                         };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(prof5);
                         break;
                 }
             }

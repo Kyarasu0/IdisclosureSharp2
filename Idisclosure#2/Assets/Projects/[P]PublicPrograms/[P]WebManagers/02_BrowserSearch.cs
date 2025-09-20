@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using ExitGames.Client.Photon;
 using Photon.Pun;
+using Photon.Realtime;
+
 using System.Linq;
 using System;
 using System.Net;
@@ -84,6 +86,7 @@ public class BrowserSearch : MonoBehaviour
                             // Scene遷移
                             SceneManager.LoadScene("Phishing" + web);
                         }
+
                         // SNS Serverの場合
                         else if (searchWords == "SNSServer".ToLower())
                         {
@@ -100,6 +103,7 @@ public class BrowserSearch : MonoBehaviour
                             // Scene遷移
                             SceneManager.LoadScene("SNSServer");
                         }
+
                         // Phishingではないの場合
                         else
                         {
@@ -115,6 +119,65 @@ public class BrowserSearch : MonoBehaviour
 
                             // Scene遷移
                             SceneManager.LoadScene(web);
+                        }
+
+                        // 誰かのPCまたはサーバーに侵入する場合
+                        foreach (Player player in PhotonNetwork.PlayerList)
+                        {
+                            // 名前を取得
+                            string playerName = "";
+                            string playerIP = "";
+                            string playerPort = "";
+                            string serverIP = "";
+                            string serverPort = "";
+                            if (player.CustomProperties.ContainsKey("Name"))
+                            {
+                                playerName = (string)player.CustomProperties["Name"];
+                            }
+
+                            // PCのIPを取得
+                            if (player.CustomProperties.ContainsKey("PlayerIP"))
+                            {
+                                playerIP = (string)player.CustomProperties["PlayerIP"];
+                            }
+                            // PCのPortを取得
+                            if (player.CustomProperties.ContainsKey("Port"))
+                            {
+                                playerPort = (string)player.CustomProperties["Port"];
+                            }
+
+                            // 検索がPCにかかっていた場合
+                            if (searchWords == playerIP + playerPort)
+                            {
+                                // 誰のログイン画面かを記録
+                                PlayerPrefs.SetString("whoLogin", playerName);
+                                PlayerPrefs.Save();
+
+                                // シーンを遷移
+                                SceneManager.LoadScene("Login");
+                            }
+
+                            // ServerのIPを取得
+                            if (player.CustomProperties.ContainsKey("ServerIP"))
+                            {
+                                serverIP = (string)player.CustomProperties["ServerIP"];
+                            }
+                            // ServerのPortを取得
+                            if (player.CustomProperties.ContainsKey("PortMyServer"))
+                            {
+                                serverPort = (string)player.CustomProperties["PortMyServer"];
+                            }
+
+                            // 検索がServerにかかっていた場合
+                            if (searchWords == serverIP + serverPort)
+                            {
+                                // 誰のログイン画面かを記録
+                                PlayerPrefs.SetString("whoLogin", playerName);
+                                PlayerPrefs.Save();
+
+                                // シーンを遷移
+                                SceneManager.LoadScene("LoginMyServer");
+                            }
                         }
                     }
 

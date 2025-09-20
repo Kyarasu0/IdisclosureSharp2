@@ -23,7 +23,7 @@ public class MoveToTerminal : MonoBehaviour
     }
     void OnClickTerminal()
     {
-        SceneManager.LoadScene("まだない");
+        SceneManager.LoadScene("Terminal");
     }
     void OnClickTerminal_LeftArrow()
     {
