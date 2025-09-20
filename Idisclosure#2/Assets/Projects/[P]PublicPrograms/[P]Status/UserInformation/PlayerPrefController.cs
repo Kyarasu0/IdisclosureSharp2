@@ -4,11 +4,19 @@ using ExitGames.Client.Photon;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerPrefsController : MonoBehaviourPunCallbacks
 {
     public TMP_Text TokensText;
     public TMP_Text BatteryText;
+
+    public TMP_Text PlayerIP;
+    public TMP_Text ServerIP;
+    [Header("素材")]
+    public Image greenLine;
+    public Image pinkLine;
 
     void Update()
     {
@@ -20,6 +28,20 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
         string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
         int age = PlayerPrefs.GetInt("Age", 00);
+
+        // IPとポート番号を取得
+        string serverIP = "";
+        PlayerIP.text = PlayerPrefs.GetString("PlayerIP", "0.0.0.0").Replace("\u200B", "");
+        serverIP += PlayerPrefs.GetString("ServerIP", "0.0.0.0").Replace("\u200B", "");
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Port"))
+        {
+            serverIP += PhotonNetwork.LocalPlayer.CustomProperties["Port"];
+        }
+        ServerIP.text = serverIP;
+
+        // BatteryBarを編集
+        greenLine.fillAmount = (float)battery * 0.01f;
+        pinkLine.fillAmount = 1f - (float)battery * 0.01f;
 
         // UIに表示
         if (TokensText != null)
@@ -37,7 +59,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
             {
                 battery = 0;
                 BatteryText.text = battery.ToString();
-                SceneManager.LoadScene("EndGame");
+                // SceneManager.LoadScene("BatteryDead");
             }
             else
             {

@@ -13,7 +13,7 @@ public class StartXm : MonoBehaviourPunCallbacks
     public TMP_Text TimeLimitText; // 制限時間表示用テキスト
     public Slider TimerSlider; // スライダー
     public Button StartButton; // スタートボタン
-    private double seconds; // 制限時間（秒）
+    private float seconds; // 制限時間（秒）
     private double startTime; // ゲーム開始時間（秒）
 
     void Start()
