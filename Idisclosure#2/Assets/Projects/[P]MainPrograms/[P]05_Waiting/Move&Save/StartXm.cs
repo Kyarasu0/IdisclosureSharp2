@@ -109,7 +109,7 @@ public class StartXm : MonoBehaviourPunCallbacks
         // プレイ時間関連を保存
         Hashtable time = new Hashtable
         {
-            { "Time", seconds },
+            { "RemainingTime", seconds },
             { "StartTime", startTime }
         };
 
