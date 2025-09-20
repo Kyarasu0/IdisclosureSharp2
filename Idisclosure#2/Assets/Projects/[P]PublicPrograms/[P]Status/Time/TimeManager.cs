@@ -19,9 +19,11 @@ public class RealTimeTimer : MonoBehaviour
     // // 2025/09/16 12:34:56 UTC(DateTime型)
     // // ↑DateTime.UtcNowでこんな感じの結果がstartTimeに入る
     // startTime = DateTime.UtcNow;
+
     // // 1726412096(DateTimeOffset型)
     // // ↑型をキャスト+形式変換をする
     // long unixTime = ((DateTimeOffset)startTime).ToUnixTimeSeconds();
+
     // // 文字列にして保存
     // PlayerPrefs.SetString("StartTime", unixTime.ToString());
     // PlayerPrefs.Save();

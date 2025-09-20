@@ -48,8 +48,8 @@ public class CreateStoreWeb : MonoBehaviour
         randomValue = Random.Range(0, 150);
         for (int i = 0; i < Webs.Length; i++)
         {
-            // Webのデータがある かつ Webが存在しないなら確率が当たっているか確認
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Webs[i]) && !((bool)PhotonNetwork.CurrentRoom.CustomProperties[Webs[i]]))
+            // Webのデータがない または Webが存在しないなら確率が当たっているか確認
+            if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Webs[i]) && (bool)PhotonNetwork.CurrentRoom.CustomProperties[Webs[i]]))
             {
                 if (randomValue == i)
                 {
