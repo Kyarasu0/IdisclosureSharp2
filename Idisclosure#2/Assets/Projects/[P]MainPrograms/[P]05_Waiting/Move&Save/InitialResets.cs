@@ -21,9 +21,10 @@ public class InitialResets : MonoBehaviour
         // Hashtables
         Hashtable props = new Hashtable
         {
-            // ServerSecurity
+            // Security
             { "Port", 22 },
-            { "Password", 000 },
+            { "PortMyServer", 22 },
+            { "PasswordMyServer", 000 },
         };
         // WebManagers
         Hashtable webs = new Hashtable();

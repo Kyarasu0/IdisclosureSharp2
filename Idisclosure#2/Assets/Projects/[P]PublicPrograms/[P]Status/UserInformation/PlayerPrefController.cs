@@ -25,14 +25,22 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         string secretID = PlayerPrefs.GetString("SecretID", "secret").Replace("\u200B", "");
         int tokens = PlayerPrefs.GetInt("Tokens", 0);
         int battery = PlayerPrefs.GetInt("Battery", 100);
+        int batteryMyServer = PlayerPrefs.GetInt("BatteryMyServer", 100);
         string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
         string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
         int age = PlayerPrefs.GetInt("Age", 00);
 
         // IPとポート番号を取得
+        string playerIP = "";
         string serverIP = "";
-        PlayerIP.text = PlayerPrefs.GetString("PlayerIP", "0.0.0.0").Replace("\u200B", "");
+        playerIP += PlayerPrefs.GetString("PlayerIP", "0.0.0.0").Replace("\u200B", "");
         serverIP += PlayerPrefs.GetString("ServerIP", "0.0.0.0").Replace("\u200B", "");
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Port"))
+        {
+            int port = (int)PhotonNetwork.LocalPlayer.CustomProperties["Port"];
+            playerIP += ":" + port.ToString();
+        }
+        PlayerIP.text = playerIP;
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Port"))
         {
             int port = (int)PhotonNetwork.LocalPlayer.CustomProperties["Port"];
@@ -75,6 +83,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         props["SecretID"] = secretID;
         props["Tokens"] = tokens;
         props["Battery"] = battery;
+        props["BatteryMyServer"] = batteryMyServer;
         props["Birthday"] = birthday;
         props["Birthyear"] = birthyear;
         props["Age"] = age;
