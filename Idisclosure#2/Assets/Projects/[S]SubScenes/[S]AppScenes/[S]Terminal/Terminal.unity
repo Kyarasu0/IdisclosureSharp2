@@ -3933,7 +3933,6 @@ GameObject:
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
   - component: {fileID: 1242558771}
-  - component: {fileID: 1242558772}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4059,21 +4058,6 @@ MonoBehaviour:
   WiFi_1_Button: {fileID: 595596831}
   WiFi_2_Button: {fileID: 1868586824}
   WiFi_3_Button: {fileID: 1045825367}
---- !u!114 &1242558772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242558765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftDirection: 0
-  Display: {fileID: 0}
-  PageDisplay: {fileID: 0}
 --- !u!1 &1262583273
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,9 +5828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pageSize: 0
   leftDirection: 1
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
+  Source: 
+  Identifier: 
 --- !u!1 &1678674476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,9 +6640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pageSize: 0
   leftDirection: 0
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
+  Source: 
+  Identifier: 
 --- !u!1 &1939109094
 GameObject:
   m_ObjectHideFlags: 0

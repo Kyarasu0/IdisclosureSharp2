@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 69850256}
   - component: {fileID: 69850255}
   m_Layer: 5
-  m_Name: FireWallText
+  m_Name: SecuritySettingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +469,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FireWall
+  m_text: 'Security
+
+    Settings'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
   m_sharedMaterial: {fileID: -3739302519245843993, guid: 1cb68c1ac811fb0479fe8275d5f516f4, type: 2}
@@ -839,7 +841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0021979, y: -0.40022}
+  m_AnchoredPosition: {x: 14.5, y: 19}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193520158
@@ -1696,7 +1698,7 @@ GameObject:
   - component: {fileID: 407708208}
   - component: {fileID: 407708210}
   m_Layer: 5
-  m_Name: FireWallButton
+  m_Name: SecuritySettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2043,7 +2045,7 @@ GameObject:
   - component: {fileID: 547327541}
   - component: {fileID: 547327543}
   m_Layer: 5
-  m_Name: FireWall_RightArrow
+  m_Name: SecuritySettings_RightArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7362,7 +7364,7 @@ GameObject:
   - component: {fileID: 1619734443}
   - component: {fileID: 1619734442}
   m_Layer: 5
-  m_Name: FireWall_Image
+  m_Name: SecuritySettings_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7407,7 +7409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf75b152a81cf9e4e8b6cc7fdc88e331, type: 3}
+  m_Sprite: {fileID: -7501232159023645123, guid: 77d3e9797ea981a428f366c9bca4dee1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
