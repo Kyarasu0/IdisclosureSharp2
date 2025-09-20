@@ -19,7 +19,7 @@ public class TokensCalc : MonoBehaviour
     void Start()
     {
         playerName = PlayerPrefs.GetString("PlayerName", "Unknown").Replace("\u200B", "");
-        playerBirthYear = PlayerPrefs.GetString("PlayerBirthYear", "0000").Replace("\u200B", "");
+        playerBirthYear = PlayerPrefs.GetString("PlayerBirthyear", "0000").Replace("\u200B", "");
         playerBirthday = PlayerPrefs.GetString("PlayerBirthday", "0000").Replace("\u200B", "");
         int playerAge = PlayerPrefs.GetInt("PlayerAge", -1);
         // 確認用にログ出力
@@ -46,7 +46,7 @@ public class TokensCalc : MonoBehaviour
         }
 
         ErrorText.gameObject.SetActive(false);
-        string CheckID = SecretID;　//チェック用の変数
+        string CheckID = SecretID; //チェック用の変数
         // トークン計算
         //名前判定
         if(CheckID.IndexOf(playerName) >= 0)
