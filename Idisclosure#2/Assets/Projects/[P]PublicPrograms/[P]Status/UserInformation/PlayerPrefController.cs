@@ -24,7 +24,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         string name = PlayerPrefs.GetString("Name", "name").Replace("\u200B", "");
         string secretID = PlayerPrefs.GetString("SecretID", "secret").Replace("\u200B", "");
         int tokens = PlayerPrefs.GetInt("Tokens", 0);
-        int battery = PlayerPrefs.GetInt("Battery", 0);
+        int battery = PlayerPrefs.GetInt("Battery", 100);
         string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
         string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
         int age = PlayerPrefs.GetInt("Age", 00);

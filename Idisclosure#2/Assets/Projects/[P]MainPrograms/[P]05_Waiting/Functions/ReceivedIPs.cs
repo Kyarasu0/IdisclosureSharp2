@@ -14,6 +14,8 @@ public class ReceiveIPs : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] receivedData = (object[])photonEvent.CustomData;
             string PlayerIP = (string)receivedData[0];
             string ServerIP = (string)receivedData[1];
+            Debug.Log("MyIP is " + PlayerIP);
+            Debug.Log("MyServerIP is " + ServerIP);
             // ローカル保存
             PlayerPrefs.SetString("PlayerIP", PlayerIP);
             PlayerPrefs.SetString("ServerIP", ServerIP);
