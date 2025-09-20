@@ -7,7 +7,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-
 public class RealTimeTimer : MonoBehaviour
 {
     [Header("素材")]
@@ -18,7 +17,7 @@ public class RealTimeTimer : MonoBehaviour
     public int timerMinutes;
     public bool testMode;
 
-    private long startTime;
+    private long startTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
     private float totalSeconds = 300;
 
     // // 2025/09/16 12:34:56 UTC(DateTime型)
@@ -35,8 +34,10 @@ public class RealTimeTimer : MonoBehaviour
 
     void Start()
     {
-        // 開始時間の取得(Long型)
-        startTime = Convert.ToInt64(PlayerPrefs.GetString("StartTime", ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds().ToString()));
+        // Debug.Log("startTime" + startTime);
+        // Debug.Log("totalSeconds" + totalSeconds);
+        // startTime = Convert.ToInt64(PlayerPrefs.GetString("StartTime", ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds().ToString()));
+
         // テスト用
         if (testMode)
         {
@@ -45,9 +46,13 @@ public class RealTimeTimer : MonoBehaviour
         }
     }
 
+
     void Update()
     {
-        // 制限時間の取得と秒数化
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("StartTime"))
+        {
+            startTime = (long)PhotonNetwork.CurrentRoom.CustomProperties["StartTime"];
+        }
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("RemainingTime"))
         {
             totalSeconds = (float)PhotonNetwork.CurrentRoom.CustomProperties["RemainingTime"];
@@ -56,6 +61,7 @@ public class RealTimeTimer : MonoBehaviour
 
         // 経過時間
         float elapsedSeconds = (float)(((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds() - startTime);
+        Debug.Log("elap" + elapsedSeconds);
 
         // 残り時間
         float remaining = (totalSeconds - elapsedSeconds);

@@ -5,6 +5,7 @@ using ExitGames.Client.Photon;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 
 public class StartXm : MonoBehaviourPunCallbacks
@@ -14,7 +15,7 @@ public class StartXm : MonoBehaviourPunCallbacks
     public Slider TimerSlider; // スライダー
     public Button StartButton; // スタートボタン
     private float seconds; // 制限時間（秒）
-    private double startTime; // ゲーム開始時間（秒）
+    private long startTime; // ゲーム開始時間（秒）
 
     void Start()
     {
@@ -41,47 +42,6 @@ public class StartXm : MonoBehaviourPunCallbacks
 
     public void StartByMaster()
     {
-        // 判別用プロパティをResetする
-        Hashtable Webs = new Hashtable 
-        { 
-            { "VirusOO", false },
-            {"FishingVirusOO", false},
-
-            { "SpareBatteryPC", false },
-            {"FishingSpareBatteryPC", false},
-
-            { "SpareBatteryMyServer", false },
-            {"FishingSpareBatteryMyServer", false},
-
-            { "SmallBatteryPC", false },
-            {"FishingSmallBatteryPC", false},
-
-            { "SmallBatteryMyServer", false },
-            {"FishingSmallBatteryMyServer", false},
-
-            { "IPBST1", false },
-            {"FishingIPBST1", false},
-
-            { "IPBST2", false },
-            {"FishingIPBST2", false},
-
-            { "IPBST3", false },
-            {"FishingIPBST3", false},
-
-            { "DoSTool", false },
-            {"FishingDoSTool", false},
-
-            { "CrackTool", false },
-            {"FishingCrackTool", false},
-        };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
-
-        Hashtable props = new Hashtable
-        {
-            { "FishingNow", false},
-        };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
-
         //Masterが押しているかどうかのチェック
         if (!PhotonNetwork.IsMasterClient)
         {
@@ -105,7 +65,7 @@ public class StartXm : MonoBehaviourPunCallbacks
 
     private void SaveTime()
     {
-        startTime = Time.time;
+        startTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
         // プレイ時間関連を保存
         Hashtable time = new Hashtable
         {
