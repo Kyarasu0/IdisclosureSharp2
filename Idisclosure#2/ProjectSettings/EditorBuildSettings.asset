@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Projects/[S]MainScenes/[S]08_Ranking/Ranking.unity
     guid: f069ff4b70dcfe74080c11a693c66779
+  - enabled: 1
+    path: Assets/Projects/[S]SubScenes/[S]ServerScenes/[S]SNSServerScenes/SNSServer.unity
+    guid: 76127a87ad5fdcf49be38f40e92afe51
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
