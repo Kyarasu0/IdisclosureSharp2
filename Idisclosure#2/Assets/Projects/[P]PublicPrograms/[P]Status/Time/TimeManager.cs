@@ -79,6 +79,7 @@ public class RealTimeTimer : MonoBehaviour
 
         // 残り時間のフォーマットを整えて表示
         TimerDisplay(remaining);
+        
 
         // タイマー終了時の処理
         if (remaining <= 0)

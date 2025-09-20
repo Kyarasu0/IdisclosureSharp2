@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WiFiActive1 : MonoBehaviour
+public class WiFiActive: MonoBehaviour
 {
     public GameObject WiFi_1_Shadow;
     public GameObject WiFi_2_Shadow;
