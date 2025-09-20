@@ -7,6 +7,16 @@ public class ReceiveIPs : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     private const byte SendIPs = 2;
 
+    new void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+    new void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+
     public void OnEvent(EventData photonEvent)
     {
         if (photonEvent.Code == SendIPs)
