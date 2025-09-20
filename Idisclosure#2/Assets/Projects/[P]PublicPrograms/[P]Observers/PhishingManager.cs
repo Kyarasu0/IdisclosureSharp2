@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class PhishingManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     private const byte SuccessPhishing = 3;
-    double startTime = 0;
+    long startUnix = 0;
+    long nowUnix = 0;
     string showBrowser = "";
 
     public void OnEvent(EventData photonEvent)
@@ -16,23 +17,27 @@ public class PhishingManager : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             // Tokensを受け取る
             int income = (int)photonEvent.CustomData;
-            int Tokens = int.Parse(PlayerPrefs.GetString("Tokens", "0").Replace("\u200B", ""));
+            int Tokens = PlayerPrefs.GetInt("Tokens", 0);
             Tokens += income;
-            PlayerPrefs.SetString("Tokens", Tokens.ToString());
+            PlayerPrefs.SetInt("Tokens", Tokens);
             PlayerPrefs.Save();
         }
     }
 
     void Start()
     {
-        startTime = double.Parse(PlayerPrefs.GetString("PhishingStartTime","0"));
+        startUnix = long.Parse(PlayerPrefs.GetString("PhishingStartTime", "0"));
     }
 
     void Update()
     {
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PhishingNow") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["PhishingNow"])
         {
-            if (Time.time - startTime >= 90)
+            // 現在の時間を取得
+            nowUnix = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
+
+            // 3分を越したらストップ
+            if (nowUnix - startUnix >= 90)
             {
                 StopPhishingApplication();
             }
@@ -41,36 +46,35 @@ public class PhishingManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void StopPhishingApplication()
     {
-        //PhishingAppの取得と無効化
-        string phishingAppName = "";
+        // Phishing中のWeb名を取得
+        string phishingWeb = PlayerPrefs.GetString("PhishingWeb", "").Replace("\u200B", "");
+
+        // ServerのIPを取得
         string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
-        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PhishingAppName"))
-        {
-            phishingAppName = (string)PhotonNetwork.LocalPlayer.CustomProperties["PhishingAppName"];
-        }
+
+        // Webの存在とPhishingのFlagを消す
         Hashtable webs = new Hashtable 
         { 
-            { phishingAppName, false },
-            { "Phishing" + phishingAppName, false },
+            { phishingWeb, false },
+            { "Phishing" + phishingWeb, false },
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
+
         // Browserから削除
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
         {
             showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
         }
-        if (showBrowser.Contains(phishingAppName + "\n"))
+        if (showBrowser.Contains(phishingWeb + "\n"))
         {
-            showBrowser = showBrowser.Replace(phishingAppName + "\n→ " + ServerIP + "\n","");
+            showBrowser = showBrowser.Replace(phishingWeb + "\n→ " + ServerIP + "\n\n","");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
             PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
         }
 
-        Hashtable props = new Hashtable
-        {
-            { "PhishingNow", false}
-        };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        // PhihsingNow
+        PlayerPrefs.SetInt("PhishingNow", 0);
+        PlayerPrefs.Save();
         Debug.Log("Done!");
     }
 }
