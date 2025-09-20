@@ -9,12 +9,12 @@ using UnityEngine.SceneManagement;
 
 public class MoveToNotificationCenter : MonoBehaviour
 {
-    public Button FireWallButton;
+    public Button SecuritySettingsButton;
     public Button NotificationCenterButton;
     public Button TerminalButton;
     public Button NotificationCenter_RightArrowButton;
     public Button NotificationCenter_LeftArrowButton;
-    public Button FireWall_RightArrowButton;
+    public Button SecuritySettings_RightArrowButton;
     public Button Terminal_LeftArrowButton;
     public TMP_Text PageText;
     void Start()
@@ -28,7 +28,7 @@ public class MoveToNotificationCenter : MonoBehaviour
     }
     void OnClickNotificationCenter()
     {
-        SceneManager.LoadScene("まだない");
+        SceneManager.LoadScene("NotificationCenter");
     }
 
     void OnClickNotificationCenter_RightArrow()
@@ -48,7 +48,7 @@ public class MoveToNotificationCenter : MonoBehaviour
         NotificationCenter_RightArrowButton.gameObject.SetActive(false);
         NotificationCenter_LeftArrowButton.gameObject.SetActive(false);
 
-        FireWall_RightArrowButton.gameObject.SetActive(true);
-        FireWallButton.gameObject.SetActive(true);
+        SecuritySettings_RightArrowButton.gameObject.SetActive(true);
+        SecuritySettingsButton.gameObject.SetActive(true);
     }
 }

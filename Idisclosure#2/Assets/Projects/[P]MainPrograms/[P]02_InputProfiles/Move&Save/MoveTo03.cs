@@ -30,8 +30,6 @@ public class MoveTo03 : MonoBehaviour
         ErrorNameText.gameObject.SetActive(false);
         ErrorBirthText.gameObject.SetActive(false);
         submitButton.onClick.AddListener(OnSubmit);
-
-
     }
 
     void OnSubmit()
@@ -44,7 +42,7 @@ public class MoveTo03 : MonoBehaviour
         // 名前形式チェック
         if (!nameRegex.IsMatch(nameText))
         {
-            ErrorNameText.text = "Please use 1–8 alphabet letters.";
+            ErrorNameText.text = "Please use 1-8 alphabet letters.";
             ErrorNameText.gameObject.SetActive(true);
             return;
         }
@@ -91,7 +89,7 @@ public class MoveTo03 : MonoBehaviour
 
         // PlayerPrefs に保存
         PlayerPrefs.SetString("PlayerName", playerName);
-        PlayerPrefs.SetString("PlayerBirthYear", playerBirthYear);
+        PlayerPrefs.SetString("PlayerBirthyear", playerBirthYear);
         PlayerPrefs.SetString("PlayerBirthday", playerBirthday);
         PlayerPrefs.SetInt("PlayerAge", playerAge);
         PlayerPrefs.Save();
