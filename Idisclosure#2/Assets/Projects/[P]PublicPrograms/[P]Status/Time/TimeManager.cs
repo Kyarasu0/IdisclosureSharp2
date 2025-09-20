@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RealTimeTimer : MonoBehaviour
 {
@@ -68,6 +69,8 @@ public class RealTimeTimer : MonoBehaviour
         if (remaining <= 0)
         {
             // 終了処理
+            SceneManager.LoadScene("Ranking");
+            Debug.Log("終了！");
         }
     }
 
