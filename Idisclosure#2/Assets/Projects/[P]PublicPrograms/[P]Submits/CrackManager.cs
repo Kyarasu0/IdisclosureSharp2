@@ -36,12 +36,12 @@ public class CrackSender : MonoBehaviourPunCallbacks
             {
                 string playerSecretID = ((string)player.CustomProperties["SecretID"]).Replace("\u200B", "");
 
-                if (guessedSecretID == playerSecretID)
+                if (guessedSecretID == playerSecretID && (bool)player.CustomProperties["Exist"])
                 {
-                    // BuhiCoin加算
-                    int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
-                    BuhiCoin += income;
-                    PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+                    // Tokens加算
+                    int Tokens = PlayerPrefs.GetInt("Tokens", 0);
+                    Tokens += income;
+                    PlayerPrefs.SetInt("Tokens", Tokens);
                     PlayerPrefs.Save();
 
                     // 成功シーンへ遷移
@@ -52,7 +52,8 @@ public class CrackSender : MonoBehaviourPunCallbacks
                     {
                         notificationDisplayGlobal = (string)PhotonNetwork.CurrentRoom.CustomProperties["NotificationDisplayGlobal"];
                     }
-                    notificationDisplayGlobal = Name + " crack " + player.NickName + "\'s SecretID!";
+
+                    notificationDisplayGlobal = "[" + Name + "] I crack " + player.NickName + "\'s SecretID!\n\n";
 
                     Hashtable notification = new Hashtable
                     {
@@ -61,6 +62,7 @@ public class CrackSender : MonoBehaviourPunCallbacks
                     PhotonNetwork.CurrentRoom.SetCustomProperties(notification);
 
                     // 相手に通知を送信
+
                     // messageの定義
                     string message = "Your SecretID is cracked!";
                     // 送信先の定義
