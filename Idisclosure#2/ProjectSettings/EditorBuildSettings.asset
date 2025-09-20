@@ -6,8 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Projects/[S]MainScenes/[S]01_StartClick/01_StartClick.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]02_InputProfiles/02_InputProfiles.unity
+    guid: 1f7dd1a35eb60fc48b1bd8039a57af9f
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]03_InputSecretID/03_InputSecretID.unity
+    guid: c07a5f649feec0644bb7768c63e64f52
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]04_CreateJoin/04_CreateJoin.unity
+    guid: 1ab901b07f8c5404a9a5731fab095479
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]05_Waiting/05_Waiting.unity
+    guid: ad56f3d9fcbcfe949b5718e837b6dc0c
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]045_Connecting/045_Connecting.unity
+    guid: 51baae1077beddc449e2eff3f5408641
+  - enabled: 1
+    path: Assets/Projects/[S]MainScenes/[S]06_GameScreen/06_GameScreen.unity
+    guid: 68f6026149684ff419ea906b0a7223a9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

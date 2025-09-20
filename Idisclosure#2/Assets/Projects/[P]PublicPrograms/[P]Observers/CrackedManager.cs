@@ -1,6 +1,23 @@
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using UnityEngine.SceneManagement;
 
-public class CrackedManatger
+public class CrackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    // Crackされた通知を受信したらゲームを終了させる
+    private const byte CrackedSecretID = 1;
+
+    public void OnEvent(EventData photonEvent)
+    {
+        if (photonEvent.Code == CrackedSecretID)
+        {
+            // DebugLogを表示
+            string message = (string)photonEvent.CustomData;
+            Debug.Log("[CrackedManager] Message received: " + message);
+
+            // Scene遷移
+            SceneManager.LoadScene("Cracked");
+        }
+    }
 }
