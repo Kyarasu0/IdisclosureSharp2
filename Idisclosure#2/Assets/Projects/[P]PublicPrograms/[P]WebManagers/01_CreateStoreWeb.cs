@@ -17,6 +17,7 @@ public class CreateStoreWeb : MonoBehaviour
 
     void Start()
     {
+        LoadWebs();
         // 起動してから1秒間隔でランダムを回す
         InvokeRepeating(nameof(RandomCreator), 0f, 1f);
     }

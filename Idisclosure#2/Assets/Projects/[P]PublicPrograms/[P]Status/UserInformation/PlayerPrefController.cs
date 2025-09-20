@@ -35,7 +35,8 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         serverIP += PlayerPrefs.GetString("ServerIP", "0.0.0.0").Replace("\u200B", "");
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Port"))
         {
-            serverIP += PhotonNetwork.LocalPlayer.CustomProperties["Port"];
+            int port = (int)PhotonNetwork.LocalPlayer.CustomProperties["Port"];
+            serverIP += ":" + port.ToString();
         }
         ServerIP.text = serverIP;
 
