@@ -103,4 +103,3 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 }
-
