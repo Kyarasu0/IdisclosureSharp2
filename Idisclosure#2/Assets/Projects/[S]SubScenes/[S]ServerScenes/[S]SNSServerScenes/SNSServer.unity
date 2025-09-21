@@ -2045,7 +2045,6 @@ GameObject:
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
   - component: {fileID: 1242558771}
-  - component: {fileID: 1242558772}
   - component: {fileID: 1242558773}
   m_Layer: 5
   m_Name: Canvas
@@ -2181,24 +2180,6 @@ MonoBehaviour:
   remainingDisplay: {fileID: 1194036173}
   timerMinutes: 0
   testMode: 0
---- !u!114 &1242558772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242558765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8c530317f71e542a753fa4983ae3d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TokensText: {fileID: 1194036173}
-  BatteryText: {fileID: 0}
-  PlayerIP: {fileID: 0}
-  ServerIP: {fileID: 0}
-  greenLine: {fileID: 0}
-  pinkLine: {fileID: 0}
 --- !u!114 &1242558773
 MonoBehaviour:
   m_ObjectHideFlags: 0

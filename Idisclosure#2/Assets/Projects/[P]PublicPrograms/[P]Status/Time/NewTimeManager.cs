@@ -7,7 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class RealTimeTimer : MonoBehaviour
+public class NewTimeManager : MonoBehaviour
 {
     [Header("素材")]
     public Image blueCircle;
@@ -139,11 +139,8 @@ public class RealTimeTimer : MonoBehaviour
                     case 1:// 名前
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                string playerName = (string)player.CustomProperties["Name"];
-                                profiles += "["+ playerName + "]Hi, I'm " + playerName + "!\n\n";
-                            }
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            profiles += "["+ playerName + "]Hi, I'm " + playerName + "!\n\n";
                         }
                         Hashtable prof = new Hashtable
                         {
@@ -155,16 +152,10 @@ public class RealTimeTimer : MonoBehaviour
                     case 2:// 誕生日
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
-                            string playerName = "";
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                playerName = (string)player.CustomProperties["Name"];
-                            }
-                            if (player.CustomProperties.ContainsKey("Birthday"))
-                            {
-                                string playerBirthday = (string)player.CustomProperties["Birthday"];
-                                profiles += "[" + playerName + "]My birthday is " + playerBirthday + "!\n\n";
-                            }
+                            string playerBirthday = "";
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            playerBirthday = PlayerPrefs.GetString("Birthday").Replace("\u200B","");
+                            profiles += "["+ playerName + "] My birthday is " + playerBirthday + "!\n\n";
                         }
                         Hashtable prof2 = new Hashtable
                         {
@@ -176,16 +167,10 @@ public class RealTimeTimer : MonoBehaviour
                     case 3:// 年齢
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
-                            string playerName = "";
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                playerName = (string)player.CustomProperties["Name"];
-                            }
-                            if (player.CustomProperties.ContainsKey("Age"))
-                            {
-                                string playerAge = (string)player.CustomProperties["Age"];
-                                profiles += "[" + playerName + "]I'm " + playerAge + " year(s) old!\n\n";
-                            }
+                            string playerAge = "";
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            playerAge = PlayerPrefs.GetString("Age").Replace("\u200B","");
+                            profiles += "["+ playerName + "] I'm " + playerAge + " year(s) old!\n\n";
                         }
                         Hashtable prof3 = new Hashtable
                         {
@@ -197,16 +182,10 @@ public class RealTimeTimer : MonoBehaviour
                     case 4:// 生年
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
-                            string playerName = "";
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                playerName = (string)player.CustomProperties["Name"];
-                            }
-                            if (player.CustomProperties.ContainsKey("Birthyear"))
-                            {
-                                string playerBirthyear = (string)player.CustomProperties["Birthyear"];
-                                profiles += "[" + playerName + "]My birthyear is " + playerBirthyear + "!\n\n";
-                            }
+                            string playerBirthyear = "";
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            playerBirthyear = PlayerPrefs.GetString("Birthyear").Replace("\u200B","");
+                            profiles += "["+ playerName + "] My birthyear is " + playerBirthyear + "!\n\n";
                         }
                         Hashtable prof4 = new Hashtable
                         {
@@ -218,16 +197,10 @@ public class RealTimeTimer : MonoBehaviour
                     case 5:// Tokens
                         foreach (Player player in PhotonNetwork.PlayerList)
                         {
-                            string playerName = "";
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                playerName = (string)player.CustomProperties["Name"];
-                            }
-                            if (player.CustomProperties.ContainsKey("Tokens"))
-                            {
-                                string playerTokens = (string)player.CustomProperties["Tokens"];
-                                profiles += "[" + playerName + "]I have " + playerTokens + " tokens!\n\n";
-                            }
+                            string playerTokens = "";
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            playerTokens = PlayerPrefs.GetString("Tokens").Replace("\u200B","");
+                            profiles += "["+ playerName + "] I have " + playerTokens + " Tokens!\n\n";
                         }
                         Hashtable prof5 = new Hashtable
                         {
