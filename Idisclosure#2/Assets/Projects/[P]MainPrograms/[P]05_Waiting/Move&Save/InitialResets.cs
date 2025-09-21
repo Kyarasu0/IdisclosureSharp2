@@ -3,6 +3,16 @@ using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
+namespace WebConfigInitialResets
+{
+    [System.Serializable]
+    public class WebsConfig
+    {
+        public string[] webs;
+    }
+}
+
+
 public class InitialResets : MonoBehaviour
 {
     string[] Webs;
@@ -40,11 +50,11 @@ public class InitialResets : MonoBehaviour
     private void LoadWebs()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("webs");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/webs");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し
-            WebsConfig config = JsonUtility.FromJson<WebsConfig>(jsonFile.text);
+            WebConfigInitialResets.WebsConfig config = JsonUtility.FromJson<WebConfigInitialResets.WebsConfig>(jsonFile.text);
             Webs = config.webs;
         }
         else

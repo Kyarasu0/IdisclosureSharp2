@@ -87,23 +87,6 @@ public class BrowserSearch : MonoBehaviour
                             SceneManager.LoadScene("Phishing" + web);
                         }
 
-                        // SNS Serverの場合
-                        else if (searchWords == "SNSServer".ToLower())
-                        {
-                            // SNSServerIPを取得
-                            string snsServerIP = "";
-                            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SNSServerIP"))
-                            {
-                                snsServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SNSServerIP"];
-                            }
-
-                            // WiFiに保存
-                            SortAndSave(snsServerIP, IP, WifiNumber);
-
-                            // Scene遷移
-                            SceneManager.LoadScene("SNSServer");
-                        }
-
                         // Phishingではないの場合
                         else
                         {
@@ -120,70 +103,134 @@ public class BrowserSearch : MonoBehaviour
                             // Scene遷移
                             SceneManager.LoadScene(web);
                         }
-
-                        // 誰かのPCまたはサーバーに侵入する場合
-                        foreach (Player player in PhotonNetwork.PlayerList)
-                        {
-                            // 名前を取得
-                            string playerName = "";
-                            string playerIP = "";
-                            string playerPort = "";
-                            string serverIP = "";
-                            string serverPort = "";
-                            if (player.CustomProperties.ContainsKey("Name"))
-                            {
-                                playerName = (string)player.CustomProperties["Name"];
-                            }
-
-                            // PCのIPを取得
-                            if (player.CustomProperties.ContainsKey("PlayerIP"))
-                            {
-                                playerIP = (string)player.CustomProperties["PlayerIP"];
-                            }
-                            // PCのPortを取得
-                            if (player.CustomProperties.ContainsKey("Port"))
-                            {
-                                playerPort = (string)player.CustomProperties["Port"];
-                            }
-
-                            // 検索がPCにかかっていた場合
-                            if (searchWords == playerIP + playerPort)
-                            {
-                                // 誰のログイン画面かを記録
-                                PlayerPrefs.SetString("whoLogin", playerName);
-                                PlayerPrefs.Save();
-
-                                // シーンを遷移
-                                SceneManager.LoadScene("Login");
-                            }
-
-                            // ServerのIPを取得
-                            if (player.CustomProperties.ContainsKey("ServerIP"))
-                            {
-                                serverIP = (string)player.CustomProperties["ServerIP"];
-                            }
-                            // ServerのPortを取得
-                            if (player.CustomProperties.ContainsKey("PortMyServer"))
-                            {
-                                serverPort = (string)player.CustomProperties["PortMyServer"];
-                            }
-
-                            // 検索がServerにかかっていた場合
-                            if (searchWords == serverIP + serverPort)
-                            {
-                                // 誰のログイン画面かを記録
-                                PlayerPrefs.SetString("whoLogin", playerName);
-                                PlayerPrefs.Save();
-
-                                // シーンを遷移
-                                SceneManager.LoadScene("LoginMyServer");
-                            }
-                        }
                     }
 
                 }
             }
 
+        }
+
+        if (searchWords == "SNSServer".ToLower())
+        {
+            // Battery関係を設定
+            int Battery = PlayerPrefs.GetInt(WitchBattery, 0);
+
+            if ((Battery - Drain >= 0))
+            {
+                // バッテリー減算処理
+                Battery -= Drain;
+                PlayerPrefs.SetInt(WitchBattery, Battery);
+                PlayerPrefs.Save();
+
+                // Wifi番号を取得
+                int WifiNumber = PlayerPrefs.GetInt("WifiNumber", 1);
+
+                // 送信元IPを取得
+                string IP = "";
+                if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey(WitchIP))
+                {
+                    IP = (string)PhotonNetwork.LocalPlayer.CustomProperties[WitchIP];
+                }
+
+                // SNSServerIPを取得
+                string snsServerIP = "";
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SNSServerIP"))
+                {
+                    snsServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SNSServerIP"];
+                }
+
+                // WiFiに保存
+                SortAndSave(snsServerIP, IP, WifiNumber);
+
+                // Scene遷移
+                SceneManager.LoadScene("SNSServer");
+            }
+        }
+
+        // 誰かのPCまたはサーバーに侵入する場合
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            // Battery関係を設定
+            int Battery = PlayerPrefs.GetInt(WitchBattery, 0);
+
+            if ((Battery - Drain >= 0))
+            {
+                // バッテリー減算処理
+                Battery -= Drain;
+                PlayerPrefs.SetInt(WitchBattery, Battery);
+                PlayerPrefs.Save();
+
+                // Wifi番号を取得
+                int WifiNumber = PlayerPrefs.GetInt("WifiNumber", 1);
+
+                // 送信元IPを取得
+                string IP = "";
+                if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey(WitchIP))
+                {
+                    IP = (string)PhotonNetwork.LocalPlayer.CustomProperties[WitchIP];
+                }
+
+                // 名前を取得
+                string playerName = "";
+                string playerIP = "";
+                int playerPort = 0;
+                string serverIP = "";
+                int serverPort = 0;
+                if (player.CustomProperties.ContainsKey("Name"))
+                {
+                    playerName = (string)player.CustomProperties["Name"];
+                }
+
+                // PCのIPを取得
+                if (player.CustomProperties.ContainsKey("PlayerIP"))
+                {
+                    playerIP = (string)player.CustomProperties["PlayerIP"];
+                }
+                // PCのPortを取得
+                if (player.CustomProperties.ContainsKey("Port"))
+                {
+                    playerPort = (int)player.CustomProperties["Port"];
+                }
+
+                // 検索がPCにかかっていた場合
+                if (searchWords == playerIP + playerPort)
+                {
+                    // WiFiに保存
+                    SortAndSave(playerIP, IP, WifiNumber);
+
+                    // 誰のログイン画面かを記録
+                    PlayerPrefs.SetString("whoLogin", playerName);
+                    PlayerPrefs.Save();
+
+                    // シーンを遷移
+                    SceneManager.LoadScene("Login");
+                }
+
+                // ServerのIPを取得
+                if (player.CustomProperties.ContainsKey("ServerIP"))
+                {
+                    serverIP = (string)player.CustomProperties["ServerIP"];
+                }
+                // ServerのPortを取得
+                if (player.CustomProperties.ContainsKey("PortMyServer"))
+                {
+                    serverPort = (int)player.CustomProperties["PortMyServer"];
+                }
+
+                // 検索がServerにかかっていた場合
+                if (searchWords == serverIP + serverPort)
+                {
+                    // WiFiに保存
+                    SortAndSave(serverIP, IP, WifiNumber);
+
+                    // 誰のログイン画面かを記録
+                    PlayerPrefs.SetString("whoLogin", playerName);
+                    PlayerPrefs.Save();
+
+                    // シーンを遷移
+                    SceneManager.LoadScene("LoginMyServer");
+                }
+            }
         }
     }
 
@@ -211,7 +258,7 @@ public class BrowserSearch : MonoBehaviour
     private void LoadWebs()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("webs");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/webs");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し
