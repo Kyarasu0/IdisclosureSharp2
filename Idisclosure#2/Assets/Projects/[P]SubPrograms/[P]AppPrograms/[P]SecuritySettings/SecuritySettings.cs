@@ -26,18 +26,41 @@ public class SecuritySettings : MonoBehaviour
     void Update()
     {
         whichBlockedIP = PC ? PlayerPrefs.GetString("BlockedIP", "").Replace("\u200B", "") : PlayerPrefs.GetString("BlockedIPMyServer", "").Replace("\u200B", "");
-        ShowText.text = (string)whichBlockedIP;
+        if (ShowText != null)
+        {
+            ShowText.text = (string)whichBlockedIP;
+        }
 
         // Serverの場合の特別処理
         if (!PC)
         {
-            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Password"))
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PasswordMyServer"))
             {
-                Password.text = PhotonNetwork.LocalPlayer.CustomProperties["Password"].ToString();
+                if (Password != null)
+                {
+                    Password.text = PhotonNetwork.LocalPlayer.CustomProperties["PasswordMyServer"].ToString();   
+                }
+            }
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PortMyServer"))
+            {
+                if (Port != null)
+                {
+                    Port.text = PhotonNetwork.LocalPlayer.CustomProperties["PortMyServer"].ToString();   
+                }
+            }
+        }
+        else
+        {
+            if (Password != null)
+            {
+                Password.text = "Nothing";   
             }
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Port"))
             {
-                Port.text = PhotonNetwork.LocalPlayer.CustomProperties["Port"].ToString();
+                if (Port != null)
+                {
+                    Port.text = PhotonNetwork.LocalPlayer.CustomProperties["Port"].ToString();   
+                }
             }
         }
     }
@@ -81,7 +104,10 @@ public class SecuritySettings : MonoBehaviour
         PlayerPrefs.Save();
 
         // ボタンを押したら入力欄をクリア
-        inputField.text = "";
+        if (inputField != null)
+        {
+            inputField.text = "";   
+        }
 
         Debug.Log("保存されたテキスト: " + whichBlockedIP);
     }
