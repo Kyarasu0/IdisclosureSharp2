@@ -18,6 +18,8 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
     public Image greenLine;
     public Image pinkLine;
     public string Server;
+    private int whichBattery = 0;
+    public bool PC_Or_Server = false;
 
     void Update()
     {
