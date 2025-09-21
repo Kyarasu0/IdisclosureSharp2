@@ -17,7 +17,6 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
     [Header("素材")]
     public Image greenLine;
     public Image pinkLine;
-    public string Server;
     private int whichBattery = 0;
     public bool PC_Or_Server = false;
 

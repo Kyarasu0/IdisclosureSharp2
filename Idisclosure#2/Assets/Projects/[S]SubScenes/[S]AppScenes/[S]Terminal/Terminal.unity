@@ -4325,7 +4325,7 @@ GameObject:
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
   - component: {fileID: 1242558771}
-  - component: {fileID: 1242558772}
+  - component: {fileID: 1242558773}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4457,7 +4457,7 @@ MonoBehaviour:
   WiFi_1_Button: {fileID: 595596831}
   WiFi_2_Button: {fileID: 1868586824}
   WiFi_3_Button: {fileID: 1045825367}
---- !u!114 &1242558772
+--- !u!114 &1242558773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4475,6 +4475,7 @@ MonoBehaviour:
   ServerIP: {fileID: 1794320055}
   greenLine: {fileID: 342234398}
   pinkLine: {fileID: 1910255533}
+  PC_Or_Server: 0
 --- !u!1 &1262583273
 GameObject:
   m_ObjectHideFlags: 0
