@@ -38,7 +38,7 @@ public class Download : MonoBehaviour
     public void DownloadTool()
     {
         string Name = PlayerPrefs.GetString("Name", "").Replace("\u200B", "");
-        int tokens = int.Parse(PlayerPrefs.GetString("Tokens", "100").Replace("\u200B", ""));
+        int tokens = PlayerPrefs.GetInt("Tokens", 100);
 
         if (testMode)
         {

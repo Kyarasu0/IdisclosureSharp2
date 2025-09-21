@@ -264,10 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee8167a2096e164fae6d0ad0736521b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Drain: 0
-  webName: 
-  greenLine: {fileID: 0}
-  pinkLine: {fileID: 0}
+  Drain: 200
+  webName: DoSTool
+  greenLine: {fileID: 1117040635}
+  pinkLine: {fileID: 2119345003}
   testMode: 0
   phishing: 0
 --- !u!1 &126541586
@@ -1458,10 +1458,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -7746538688605318402, guid: 54770d7118102664fbf88ebfc014dad1, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1881,13 +1881,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -6055035485343319725, guid: f7a6de6735cf8c84993bd0f62617ac42, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2119345004

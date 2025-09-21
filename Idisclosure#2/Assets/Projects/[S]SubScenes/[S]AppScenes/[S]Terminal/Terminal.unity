@@ -4325,7 +4325,7 @@ GameObject:
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
   - component: {fileID: 1242558771}
-  - component: {fileID: 1242558773}
+  - component: {fileID: 1242558772}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4457,7 +4457,7 @@ MonoBehaviour:
   WiFi_1_Button: {fileID: 595596831}
   WiFi_2_Button: {fileID: 1868586824}
   WiFi_3_Button: {fileID: 1045825367}
---- !u!114 &1242558773
+--- !u!114 &1242558772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4475,6 +4475,7 @@ MonoBehaviour:
   ServerIP: {fileID: 1794320055}
   greenLine: {fileID: 342234398}
   pinkLine: {fileID: 1910255533}
+  Server: 
   PC_Or_Server: 0
 --- !u!1 &1262583273
 GameObject:
@@ -6382,7 +6383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageSize: 0
+  pageSize: 6
   leftDirection: 1
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
@@ -6944,6 +6945,7 @@ GameObject:
   - component: {fileID: 1868346889}
   - component: {fileID: 1868346888}
   - component: {fileID: 1868346887}
+  - component: {fileID: 1868346890}
   m_Layer: 5
   m_Name: TerminalInput
   m_TagString: Untagged
@@ -7032,7 +7034,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1868346890}
+        m_TargetAssemblyTypeName: NewTerminal, Assembly-CSharp
+        m_MethodName: RunCommand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -7110,6 +7124,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868346885}
   m_CullTransparentMesh: 1
+--- !u!114 &1868346890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868346885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e091fe20eaddc4fafadc833461da07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Command: {fileID: 1868346887}
+  ShowIDDisplay: {fileID: 266851310}
 --- !u!1 &1868586822
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,7 +7512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12708faf4ca750a4ba9d16d4ed49caac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageSize: 0
+  pageSize: 6
   leftDirection: 0
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
