@@ -19,6 +19,7 @@ public class NewTimeManager : MonoBehaviour
 
     private long startTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
     private float totalSeconds = 300;
+    
     private bool hasEnded = false;
 
     // // 2025/09/16 12:34:56 UTC(DateTime型)
@@ -65,10 +66,12 @@ public class NewTimeManager : MonoBehaviour
 
         // 残り時間
         float remaining = (totalSeconds - elapsedSeconds);
+        
         if (remaining < 0 && !hasEnded)
         {
             remaining = 0;
             hasEnded = true;
+
         }
 
         // 残り時間に応じてSNSServerを操作
@@ -126,7 +129,10 @@ public class NewTimeManager : MonoBehaviour
         {
             if (timeRemaining < totalSeconds * (float)(maxEvent - eventDone) / maxEvent)
             {
-                Debug.Log($"おそらく開示まで{ timeRemaining - totalSeconds * (float)(maxEvent - eventDone) / maxEvent}");
+
+       
+
+                Debug.Log($"SNSおそらく{timeRemaining - totalSeconds * (float)(maxEvent - eventDone) / maxEvent}");
                 // eventDoneを1進めて保存
                 eventDone++;
                 Hashtable done = new Hashtable
@@ -136,11 +142,21 @@ public class NewTimeManager : MonoBehaviour
                 PhotonNetwork.CurrentRoom.SetCustomProperties(done);
 
                 // eventDoneの数字によって挙動を変える
+
                 string playerName = PlayerPrefs.GetString("PlayerName", "").Replace("\u200B","");
                 switch (eventDone)
                 {
                     case 1:// 名前
                         profiles += "[" + playerName + "] Hi, I'm " + playerName + "!\n\n";
+
+                switch (eventDone)
+                {
+                    case 1:// 名前
+                        foreach (Player player in PhotonNetwork.PlayerList)
+                        {
+                            string playerName = PlayerPrefs.GetString("Name").Replace("\u200B","");
+                            profiles += "["+ playerName + "]Hi, I'm " + playerName + "!\n\n";
+                        }
                         Hashtable prof = new Hashtable
                         {
                             {"Profiles", profiles},
@@ -151,6 +167,7 @@ public class NewTimeManager : MonoBehaviour
                     case 2:// 誕生日
                         string playerBirthday = PlayerPrefs.GetString("PlayerBirthday", "");
                         profiles += "[" + playerName + "] My Birthday is " + playerBirthday + "!\n\n";
+
                         Hashtable prof2 = new Hashtable
                         {
                             {"Profiles", profiles},
@@ -159,8 +176,11 @@ public class NewTimeManager : MonoBehaviour
                         break;
 
                     case 3:// 年齢
+
                         string playerAge = PlayerPrefs.GetString("PlayerAge", "");
                         profiles += "[" + playerName + "] I'm " + playerAge + " year(s) old!\n\n";
+
+
                         Hashtable prof3 = new Hashtable
                         {
                             {"Profiles", profiles},
@@ -168,9 +188,10 @@ public class NewTimeManager : MonoBehaviour
                         PhotonNetwork.CurrentRoom.SetCustomProperties(prof3);
                         break;
 
-                    case 4:// 生年
+                    case 4:// 生年<
                         string playerBirthyear = PlayerPrefs.GetString("PlayerBirthyear", "");
                         profiles += "[" + playerName + "] My birthyear is " + playerBirthyear + "!\n\n";
+
                         Hashtable prof4 = new Hashtable
                         {
                             {"Profiles", profiles},
@@ -181,6 +202,7 @@ public class NewTimeManager : MonoBehaviour
                     case 5:// Tokens
                         string tokens = PlayerPrefs.GetString("Tokens", "");
                         profiles += "[" + playerName + "] I have " + tokens + " Tokens!\n\n";
+
                         Hashtable prof5 = new Hashtable
                         {
                             {"Profiles", profiles},

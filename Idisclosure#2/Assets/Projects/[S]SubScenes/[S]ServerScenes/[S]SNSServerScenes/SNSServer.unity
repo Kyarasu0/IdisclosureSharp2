@@ -2275,8 +2275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ad6fa522b1dda4ca890156338590ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   TokensText: {fileID: 1336466978}
 --- !u!114 &1242558774
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2285,6 +2287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242558765}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 1d8c530317f71e542a753fa4983ae3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -2295,6 +2298,7 @@ MonoBehaviour:
   greenLine: {fileID: 0}
   pinkLine: {fileID: 0}
   PC_Or_Server: 0
+
 --- !u!1 &1336466976
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,8 +122,9 @@ public class RealTimeTimer : MonoBehaviour
         }
         if (eventDone < maxEvent)
         {
-            if (timeRemaining < timeRemaining * (float)(maxEvent - eventDone) / maxEvent)
+            if (timeRemaining < totalSeconds * (float)(maxEvent - eventDone) / maxEvent)
             {
+                Debug.Log($"SNSおそらく{timeRemaining - totalSeconds * (float)(maxEvent - eventDone) / maxEvent}");
                 // eventDoneを1進めて保存
                 eventDone++;
                 Hashtable done = new Hashtable
@@ -141,7 +142,7 @@ public class RealTimeTimer : MonoBehaviour
                             if (player.CustomProperties.ContainsKey("Name"))
                             {
                                 string playerName = (string)player.CustomProperties["Name"];
-                                profiles += "["+ playerName + "]Hi, I'm" + playerName + "!\n\n";
+                                profiles += "["+ playerName + "]Hi, I'm " + playerName + "!\n\n";
                             }
                         }
                         Hashtable prof = new Hashtable
