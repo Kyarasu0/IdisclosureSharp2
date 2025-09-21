@@ -45,7 +45,7 @@ public class CreateStoreWeb : MonoBehaviour
         }
 
         // 特定のIDが当たればWebが建ち上がる
-        randomValue = Random.Range(0, 150);
+        randomValue = Random.Range(0, 11);
         for (int i = 0; i < Webs.Length; i++)
         {
             // Webのデータがない または Webが存在しないなら確率が当たっているか確認

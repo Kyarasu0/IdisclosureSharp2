@@ -145,7 +145,7 @@ public class PhishingMenu : MonoBehaviour
     private void LoadMalwares()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("malwares");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/malwares");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し
