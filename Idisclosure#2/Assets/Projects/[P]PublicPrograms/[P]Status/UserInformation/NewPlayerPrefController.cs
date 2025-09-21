@@ -17,6 +17,8 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
     [Header("素材")]
     public Image greenLine;
     public Image pinkLine;
+    private int whichBattery = 0;
+    public bool PC_Or_Server = false;
 
     void Update()
     {
@@ -40,7 +42,7 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
             int port = (int)PhotonNetwork.LocalPlayer.CustomProperties["Port"];
             playerIP += ":" + port.ToString();
         }
-        if (playerIP != null)
+        if (PlayerIP != null)
         {
             PlayerIP.text = playerIP;        
         }
@@ -49,15 +51,18 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
             int port = (int)PhotonNetwork.LocalPlayer.CustomProperties["Port"];
             serverIP += ":" + port.ToString();
         }
-        if (serverIP != null)
+        if (ServerIP != null)
         {
             ServerIP.text = serverIP;      
         }
 
+        // PCかBatteryかを決定
+        whichBattery = PC_Or_Server ? batteryMyServer : battery;
+
         // BatteryBarを編集
         if (greenLine != null)
         {
-            greenLine.fillAmount = (float)battery * 0.01f;   
+            greenLine.fillAmount = (float)battery * 0.01f;
         }
         if (pinkLine != null)
         {
@@ -70,20 +75,20 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
         }
         if (BatteryText != null)
         {
-            if (battery > 100)
+            if (whichBattery > 100)
             {
-                battery = 100;
-                BatteryText.text = battery.ToString();
+                whichBattery = 100;
+                BatteryText.text = whichBattery.ToString();
             }
-            else if (battery <= 0)
+            else if (whichBattery <= 0)
             {
-                battery = 0;
-                BatteryText.text = battery.ToString();
+                whichBattery = 0;
+                BatteryText.text = whichBattery.ToString();
                 // SceneManager.LoadScene("BatteryDead");
             }
             else
             {
-                BatteryText.text = battery.ToString();
+                BatteryText.text = whichBattery.ToString();
             }
             
         }

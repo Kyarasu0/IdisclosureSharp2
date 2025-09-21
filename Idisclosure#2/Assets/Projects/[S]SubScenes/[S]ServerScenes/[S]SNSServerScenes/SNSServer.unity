@@ -438,6 +438,55 @@ Transform:
   - {fileID: 455504253}
   m_Father: {fileID: 1242558769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &175294424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175294426}
+  - component: {fileID: 175294425}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &175294425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175294424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b9bc6fb5d34a149919ad501baf5288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueCircle: {fileID: 1589456344}
+  pinkCircle: {fileID: 1888433129}
+  remainingDisplay: {fileID: 1194036173}
+  timerMinutes: 0
+  testMode: 0
+--- !u!4 &175294426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175294424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 377.57935, y: 215.2835, z: 0.35302085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193520156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1382,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950198715}
   m_CullTransparentMesh: 1
+--- !u!1 &1097490715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097490717}
+  - component: {fileID: 1097490716}
+  m_Layer: 0
+  m_Name: PlayerPrefsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1097490716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097490715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8c530317f71e542a753fa4983ae3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TokensText: {fileID: 1336466978}
+  BatteryText: {fileID: 0}
+  PlayerIP: {fileID: 0}
+  ServerIP: {fileID: 0}
+  greenLine: {fileID: 0}
+  pinkLine: {fileID: 0}
+  PC_Or_Server: 0
+--- !u!4 &1097490717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097490715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 339.15817, y: 193.29681, z: 0.8068211}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1132684849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,8 +2144,8 @@ GameObject:
   - component: {fileID: 1242558767}
   - component: {fileID: 1242558766}
   - component: {fileID: 1242558770}
-  - component: {fileID: 1242558771}
   - component: {fileID: 1242558773}
+  - component: {fileID: 1242558774}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2163,23 +2263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClockText: {fileID: 1507634224}
---- !u!114 &1242558771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242558765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a317fd1406dd7149bcb2aadfddf3c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blueCircle: {fileID: 1589456344}
-  pinkCircle: {fileID: 1888433129}
-  remainingDisplay: {fileID: 1194036173}
-  timerMinutes: 0
-  testMode: 0
 --- !u!114 &1242558773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2275,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ad6fa522b1dda4ca890156338590ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   TokensText: {fileID: 1336466978}
+--- !u!114 &1242558774
+
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242558765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 1d8c530317f71e542a753fa4983ae3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TokensText: {fileID: 1336466978}
+  BatteryText: {fileID: 0}
+  PlayerIP: {fileID: 0}
+  ServerIP: {fileID: 0}
+  greenLine: {fileID: 0}
+  pinkLine: {fileID: 0}
+  PC_Or_Server: 0
+
 --- !u!1 &1336466976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4250,3 +4356,5 @@ SceneRoots:
   - {fileID: 1407795246}
   - {fileID: 1497451906}
   - {fileID: 1242558769}
+  - {fileID: 175294426}
+  - {fileID: 1097490717}

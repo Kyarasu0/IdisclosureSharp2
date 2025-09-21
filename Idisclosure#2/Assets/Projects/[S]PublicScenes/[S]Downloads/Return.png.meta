@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: e91b81a69b5a9c24d9236f55fef626dc
+guid: 0c311f14f992dd742a4a92951a46d6d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3547798775694203092
-    second: Spare Battery_0
+      213: -3092956421908063085
+    second: Return_0
   - first:
-      213: 2428750797621659718
-    second: Spare Battery_1
+      213: 1850832730187021959
+    second: Return_1
   - first:
-      213: -3037178059741205880
-    second: Spare Battery_2
+      213: -4521355783803873541
+    second: Return_2
   - first:
-      213: -5299357598729144586
-    second: Spare Battery_3
+      213: 2100415886891379821
+    second: Return_3
+  - first:
+      213: -689305739145711562
+    second: Return_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spare Battery_0
+      name: Return_0
       rect:
         serializedVersion: 2
-        x: 1278
-        y: 1489
-        width: 965
-        height: 275
+        x: 65
+        y: 237
+        width: 151
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c276e208fcfa3cec0800000000000000
-      internalID: -3547798775694203092
+      spriteID: 39c186e758c9315d0800000000000000
+      internalID: -3092956421908063085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spare Battery_1
+      name: Return_1
       rect:
         serializedVersion: 2
-        x: 95
-        y: 334
-        width: 1752
-        height: 1054
+        x: 215
+        y: 50
+        width: 86
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,42 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6488f2c7bf7a4b120800000000000000
-      internalID: 2428750797621659718
+      spriteID: 78eb67ddf8a7fa910800000000000000
+      internalID: 1850832730187021959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spare Battery_2
-      rect:
-        serializedVersion: 2
-        x: 1938
-        y: 332
-        width: 1568
-        height: 1055
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 88ae38575a6c9d5d0800000000000000
-      internalID: -3037178059741205880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spare Battery_3
+      name: Return_2
       rect:
         serializedVersion: 2
         x: 6
-        y: 6
-        width: 689
-        height: 253
+        y: 38
+        width: 35
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +184,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f67bf55756e476b0800000000000000
-      internalID: -5299357598729144586
+      spriteID: bf6563baedae041c0800000000000000
+      internalID: -4521355783803873541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 87
+        width: 152
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c6fb2ee1d262d10800000000000000
+      internalID: 2100415886891379821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 12
+        width: 154
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630f49415181f66f0800000000000000
+      internalID: -689305739145711562
       vertices: []
       indices: 
       edges: []
@@ -223,10 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Spare Battery_0: -3547798775694203092
-      Spare Battery_1: 2428750797621659718
-      Spare Battery_2: -3037178059741205880
-      Spare Battery_3: -5299357598729144586
+      Return_0: -3092956421908063085
+      Return_1: 1850832730187021959
+      Return_2: -4521355783803873541
+      Return_3: 2100415886891379821
+      Return_4: -689305739145711562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
