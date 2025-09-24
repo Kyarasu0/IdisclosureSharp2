@@ -6140,6 +6140,7 @@ GameObject:
   - component: {fileID: 1571917754}
   - component: {fileID: 1571917753}
   - component: {fileID: 1571917752}
+  - component: {fileID: 1571917755}
   m_Layer: 5
   m_Name: TerminalMenuButton
   m_TagString: Untagged
@@ -6164,8 +6165,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: -402}
-  m_SizeDelta: {x: 160, y: 177.06}
+  m_AnchoredPosition: {x: 412.0382, y: -402.59827}
+  m_SizeDelta: {x: 263.483, y: 118.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571917752
 MonoBehaviour:
@@ -6210,7 +6211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571917753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1571917755}
+        m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
+        m_MethodName: ReturnToTerminalMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571917753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6231,7 +6244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5325650105722581375, guid: 063cc188a26ef214285bded2d2da26fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9521b074c3e487144a6182893130db25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6249,6 +6262,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571917750}
   m_CullTransparentMesh: 1
+--- !u!114 &1571917755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571917750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528169d7b4ac2f04195dc4b16b943280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579640378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6387,8 +6412,8 @@ MonoBehaviour:
   leftDirection: 1
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
-  Source: 
-  Identifier: 
+  Source: TerminalDisplay
+  Identifier: Terminal
 --- !u!1 &1678674476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6970,8 +6995,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202.296, y: -402}
-  m_SizeDelta: {x: 1209.455, y: 177.063}
+  m_AnchoredPosition: {x: -245.01688, y: -402}
+  m_SizeDelta: {x: 1124.013, y: 177.063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868346887
 MonoBehaviour:
@@ -7036,8 +7061,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1868346890}
-        m_TargetAssemblyTypeName: NewTerminal, Assembly-CSharp
-        m_MethodName: RunCommand
+        m_TargetAssemblyTypeName: Execute, Assembly-CSharp
+        m_MethodName: RunTools
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7133,11 +7158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868346885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e091fe20eaddc4fafadc833461da07, type: 3}
+  m_Script: {fileID: 11500000, guid: ae8c40f0122a1a2479ce64549de0b333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Command: {fileID: 1868346887}
-  ShowIDDisplay: {fileID: 266851310}
+  Command: {fileID: 1359362995}
+  Terminal: {fileID: 266851310}
+  PC_Or_Server: PC
 --- !u!1 &1868586822
 GameObject:
   m_ObjectHideFlags: 0
@@ -7516,8 +7542,8 @@ MonoBehaviour:
   leftDirection: 0
   Display: {fileID: 266851310}
   PageDisplay: {fileID: 282091701}
-  Source: 
-  Identifier: 
+  Source: TerminalDisplay
+  Identifier: Terminal
 --- !u!1 &1939109094
 GameObject:
   m_ObjectHideFlags: 0

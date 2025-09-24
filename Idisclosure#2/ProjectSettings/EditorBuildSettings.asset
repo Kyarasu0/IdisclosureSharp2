@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Projects/[S]PublicScenes/[S]Downloads/Battery25/Battery25.unity
     guid: 24be2eb01e6ab5b43add4a32ad88a5ef
   - enabled: 1
-    path: Assets/Projects/[S]PublicScenes/[S]Downloads/Spyware1/Spyware.unity
+    path: Assets/Projects/[S]PublicScenes/[S]Downloads/Spyware/Spyware.unity
     guid: 54a3d3228dca9c4499e71c1e1bd04453
   - enabled: 1
     path: Assets/Projects/[S]PublicScenes/[S]Downloads/CrackTool/CrackTool.unity
@@ -63,7 +63,7 @@ EditorBuildSettings:
     path: Assets/Projects/[S]PublicScenes/[S]Downloads/Sniffing3/Sniffing3.unity
     guid: dc4e0365ddb49874d999f5bbd21e8c13
   - enabled: 1
-    path: Assets/Projects/[S]PublicScenes/[S]Downloads/SpareBattery/SpareBattery.unity
+    path: Assets/Projects/[S]PublicScenes/[S]Downloads/Backup/Battery100.unity
     guid: cf71761a119f9bd44b0de92f5f42b03d
   - enabled: 1
     path: Assets/Projects/[S]PublicScenes/[S]Downloads/Worm/Worm.unity
@@ -89,6 +89,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Projects/[S]PublicScenes/[S]Downloads/Sniffing2/Sniffing2.unity
     guid: a3ddff3a2aab80849a5ee29ec0305150
+  - enabled: 1
+    path: Assets/Projects/[S]PublicScenes/[S]Results/Success/Success.unity
+    guid: 9adff551165df16479ecebf6209505ce
+  - enabled: 1
+    path: Assets/Projects/[S]PublicScenes/[S]Results/Success/Failed.unity
+    guid: 633b9da312a9daf46a21b5a16f42ec6b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

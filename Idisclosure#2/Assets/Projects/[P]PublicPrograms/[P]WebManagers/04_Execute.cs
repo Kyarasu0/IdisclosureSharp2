@@ -17,7 +17,7 @@ public class Execute : MonoBehaviour
         LoadWebs();
     }
 
-    void RunTools()
+    public void RunTools()
     {
         // オブジェクトを文字に変換
         // ここではCrackToolのため小文字に強制しないのでUsageのUIで指示する必要がある
@@ -32,15 +32,16 @@ public class Execute : MonoBehaviour
         {
             WitchBattery = "BatteryMyServer";
         }
-        
+
         // Terminal実行(検索)を検知する
         foreach (string web in Webs)
         {
             // Patternが一致し、Downloadされていればスクリプトファイルを実行
-            if (Regex.IsMatch(command, $@"{web.ToLower()}.*") && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey($"Download{web}") && (bool)PhotonNetwork.LocalPlayer.CustomProperties[$"Download{web}"])
+            if (Regex.IsMatch(command, $@"{web.ToLower()}.*") && PlayerPrefs.GetInt($"Download{web}", 0) == 1)
             {
                 // CommandHeader部分を削除(例:dostool <ip> → <ip>)
-                command = command.Replace(web.ToLower(), "");
+                command = command.ToLower();
+                command = command.Replace(web.ToLower() + " ", "");
 
                 // classNameを作成
                 string className = web;
@@ -58,6 +59,16 @@ public class Execute : MonoBehaviour
                     type.GetMethod("Execute")?.Invoke(instance, new object[] { command, WitchBattery });
                 }
 
+                Debug.Log($"{web}を実行します");
+
+            }
+            else if (!(Regex.IsMatch(command, $@"{web.ToLower()}.*")))
+            {
+                Debug.Log($"{command}と{web.ToLower()}の形式が違います");
+            }
+            else if (PlayerPrefs.GetInt($"Download{web}", 0) == 0 && Regex.IsMatch(command, $@"{web.ToLower()}.*"))
+            {
+                Debug.Log("このアイテムを所持していないようです");
             }
         }
     }
@@ -73,7 +84,7 @@ public class Execute : MonoBehaviour
     private void LoadWebs()
     {
         // Jsonのパスを指定してテキスト形式で読み取り
-        TextAsset jsonFile = Resources.Load<TextAsset>("Jsonwebs");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/webs");
         if (jsonFile != null)
         {
             // 正しい形式にしてconfigに保存、そのconfigの読み出し

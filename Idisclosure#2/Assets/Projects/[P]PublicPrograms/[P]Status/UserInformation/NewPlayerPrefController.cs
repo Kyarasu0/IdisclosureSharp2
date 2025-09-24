@@ -17,9 +17,8 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
     [Header("素材")]
     public Image greenLine;
     public Image pinkLine;
-    public string Server;
     private int whichBattery = 0;
-    public bool PC_Or_Server = false;
+    public bool ServerMode = false;
 
     void Update()
     {
@@ -58,7 +57,7 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
         }
 
         // PCかBatteryかを決定
-        whichBattery = PC_Or_Server ? batteryMyServer : battery;
+        whichBattery = ServerMode ? batteryMyServer : battery;
 
         // BatteryBarを編集
         if (greenLine != null)
@@ -69,11 +68,14 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
         {
             pinkLine.fillAmount = 1f - (float)battery * 0.01f;   
         }
+
         // UIに表示
         if (TokensText != null)
         {
             TokensText.text = tokens.ToString();
         }
+        
+        // Batteryを操作
         if (BatteryText != null)
         {
             if (whichBattery > 100)
@@ -91,7 +93,7 @@ public class NewPlayerPrefsController : MonoBehaviourPunCallbacks
             {
                 BatteryText.text = whichBattery.ToString();
             }
-            
+
         }
 
         // カスタムプロパティに設定

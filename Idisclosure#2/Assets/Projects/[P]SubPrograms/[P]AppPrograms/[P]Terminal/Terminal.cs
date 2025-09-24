@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class Terminal
+public class Terminal : MonoBehaviour
 {
     string terminalMenu = "";
+
+    void Start()
+    {
+        ReturnToTerminalMenu();
+    }
     public void ReturnToTerminalMenu()
     {
         // TerminalMenuを取得
