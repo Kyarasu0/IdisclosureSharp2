@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
+using System.Linq;
 
 public class DisplayManager: MonoBehaviour
 {
@@ -44,6 +45,9 @@ public class DisplayManager: MonoBehaviour
         // \n\nを境にして配列の要素に分割
         showParts = show.Split("\n\n");
 
+        // 空文字を取り除く
+        showParts = showParts.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+
         // 順々に要素を追加し、4つごとに新しいPageを作成する
         Hashtable Show = new Hashtable();
         for (i = 0; i < showParts.Length; i++)
@@ -59,7 +63,7 @@ public class DisplayManager: MonoBehaviour
                 onePageElement = "";
             }
             // すべての項目を登録しきったら4つそろってなくても保存
-            else if ((i + 1) == showParts.Length)
+            else if ((i + 1) == showParts.Length && (i + 1) % pageSize != 0)
             {
                 Show[$"DisplayPage{Identifier}{((i + 1) / pageSize) + 1}"] = onePageElement;
                 // Pageの最大値を更新

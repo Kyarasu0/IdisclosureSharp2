@@ -14,12 +14,37 @@ public class CreateStoreWeb : MonoBehaviour
 
     string snsServerIP = "";
 
+    string getWebIP = "";
+
     void Start()
     {
         LoadWebs();
         // 起動してから1秒間隔でランダムを回す
         InvokeRepeating(nameof(RandomCreator), 0f, 1f);
+        InvokeRepeating(nameof(UpdateWebs), 0f, 0.3f);
         Debug.Log("CreateStoreWeb始動!");
+    }
+
+    void UpdateWebs()
+    {
+        for (int i = 0; i < Webs.Length; i++)
+        {
+            // showBrowserに含まれておらず、webがtrueだったらshowBrowserに追加する
+            if (!(showBrowser.Contains(Webs[i] + "\n")) && PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Webs[i]) && (bool)PhotonNetwork.CurrentRoom.CustomProperties[Webs[i]])
+            {
+                // WebのIPを取得
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Webs[i] + "IP"))
+                {
+                    getWebIP = (string)PhotonNetwork.CurrentRoom.CustomProperties[Webs[i] + "IP"];
+                }
+
+                // Browserに追加
+                showBrowser += Webs[i] + "\n→ " + getWebIP + ": 80\n\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                Debug.Log(Webs[i] + "が描画された！");
+            }
+        }
     }
 
     void RandomCreator()
@@ -45,7 +70,7 @@ public class CreateStoreWeb : MonoBehaviour
         }
 
         // 特定のIDが当たればWebが建ち上がる
-        randomValue = Random.Range(0, 11);
+        randomValue = Random.Range(0, Webs.Length + 150);
         for (int i = 0; i < Webs.Length; i++)
         {
             // Webのデータがない または Webが存在しないなら確率が当たっているか確認
@@ -53,25 +78,17 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 if (randomValue == i)
                 {
-                    Debug.Log("何かが当たった！");
                     // 判別しているプロパティをtrueにする
                     Hashtable props = new Hashtable { { Webs[i], true } };
                     PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+                    MakeIP(Webs[i]);
                     Debug.Log("Create" + Webs[i]);
-                    if (!(showBrowser.Contains(Webs[i] + "\n")))
-                    {
-                        // Browserに追加
-                        showBrowser += Webs[i] + "\n→ " + MakeIP(Webs[i]) + ": 80\n\n";
-                        Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
-                        PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
-                        Debug.Log(Webs[i] + "が描画された！");
-                    }
                 }
             }
         }
     }
 
-    public string MakeIP(string webName)
+    public void MakeIP(string webName)
     {
         // IPアドレスのリストを取得する
         List<string> IPList = new List<string>();
@@ -108,7 +125,6 @@ public class CreateStoreWeb : MonoBehaviour
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
         Debug.Log("IPList is saved! : " + string.Join(",", IPList));
-        return NewIP;
     }
     
     private void LoadWebs()
