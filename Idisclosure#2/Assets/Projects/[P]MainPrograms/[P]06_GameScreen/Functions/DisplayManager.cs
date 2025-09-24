@@ -5,11 +5,11 @@ using TMPro;
 
 public class DisplayManager: MonoBehaviour
 {
-    string[] browserParts;
+    string[] showParts;
     string onePageElement = "";
     public int pageSize;
     int i = 0;
-    string showBrowser = "";
+    string show = "";
     int currentPage = 1;
     int direction = 0;
     int pageMax = 0;
@@ -31,40 +31,44 @@ public class DisplayManager: MonoBehaviour
     {
         // \n\nを4つごとに区切って各Pageに常に分ける
 
-        // BrowserDisplayを取得
+        // sourceを取得
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Source))
         {
-            showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties[Source];
+            show = (string)PhotonNetwork.CurrentRoom.CustomProperties[Source];
+        }
+        else
+        {
+            show = PlayerPrefs.GetString(Source, "").Replace("\u200B", "");
         }
 
         // \n\nを境にして配列の要素に分割
-        browserParts = showBrowser.Split("\n\n");
+        showParts = show.Split("\n\n");
 
         // 順々に要素を追加し、4つごとに新しいPageを作成する
-        Hashtable ShowBrowser = new Hashtable();
-        for (i = 0; i < browserParts.Length; i++)
+        Hashtable Show = new Hashtable();
+        for (i = 0; i < showParts.Length; i++)
         {
-            onePageElement += browserParts[i] + "\n\n";
+            onePageElement += showParts[i] + "\n\n";
             // 要素数がPageSizeに達したら保存とPageの切り替え
             if ((i + 1) % pageSize == 0)
             {
-                ShowBrowser[$"DisplayPage{Identifier}{(i + 1) / pageSize}"] = onePageElement;
+                Show[$"DisplayPage{Identifier}{(i + 1) / pageSize}"] = onePageElement;
                 // Pageの最大値を更新
-                ShowBrowser[$"PageMax{Identifier}"] = (i + 1) / pageSize;
+                Show[$"PageMax{Identifier}"] = (i + 1) / pageSize;
                 // 保存後にリセット
                 onePageElement = "";
             }
             // すべての項目を登録しきったら4つそろってなくても保存
-            else if ((i + 1) == browserParts.Length)
+            else if ((i + 1) == showParts.Length)
             {
-                ShowBrowser[$"DisplayPage{Identifier}{((i + 1) / pageSize) + 1}"] = onePageElement;
+                Show[$"DisplayPage{Identifier}{((i + 1) / pageSize) + 1}"] = onePageElement;
                 // Pageの最大値を更新
-                ShowBrowser[$"PageMax{Identifier}"] = ((i + 1) / pageSize) + 1;
+                Show[$"PageMax{Identifier}"] = ((i + 1) / pageSize) + 1;
                 // 保存後にリセット
                 onePageElement = "";
             }
         }
-        PhotonNetwork.CurrentRoom.SetCustomProperties(ShowBrowser);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(Show);
 
         // Pageを表示
 

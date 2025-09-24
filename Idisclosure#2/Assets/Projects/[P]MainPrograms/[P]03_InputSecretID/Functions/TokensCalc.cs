@@ -84,6 +84,7 @@ public class TokensCalc : MonoBehaviour
         Tokens = Mathf.FloorToInt(RawTokens / 100) * 100;
         TokensText.text = Tokens.ToString() + " pt";
         PlayerPrefs.SetInt("Tokens", Tokens);
+        Debug.Log(Tokens);
         PlayerPrefs.Save();
     }
 }
